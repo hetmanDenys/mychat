@@ -1,0 +1,81 @@
+header {
+  background: black;
+  height: 50px;
+}
+.link {
+  background: #c6c3c3;
+  height: 34px;
+  width: 100px;
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+.hello{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+.general {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.user{
+ color: #c6c3c3;
+}
+
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.link a{
+  margin-top: 12px;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+}
+
+.right{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.left{
+  display: flex;
+  justify-content: flex-start;
+}
+.users{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.user_block{
+  background: #c6c3c3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50px;
+  min-width: 0px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+#links{
+  flex-wrap: wrap;
+  min-height: 50px;
+  min-width: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.user_block a{
+  display: block;
+  height: 100%;
+  width: 100%;
+}

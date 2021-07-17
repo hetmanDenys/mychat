@@ -1,0 +1,2 @@
+module UserChatHelper
+end

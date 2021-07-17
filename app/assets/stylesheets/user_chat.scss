@@ -1,0 +1,141 @@
+// Place all the styles related to the user_chat controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.for_all{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background: #e1e1e1;
+  height: 90%;
+  width: 40%;
+  margin-left: 30%;
+  margin-top: 20px;
+  border: 3mm ridge rgba(89, 102, 120, 0.6);
+}
+
+.output{
+  height: 700px;
+  width: 600px;
+  background: #c6c3c3;
+  margin-top: 20px;
+  border: solid;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.input{
+  margin-right: 338px;
+  margin-top: 20px;
+}
+
+body{
+  background: #f4f4f4;
+}
+ .name{
+   border-bottom: solid;
+   display: flex;
+   color: #e5e3e3;
+   justify-content: center;
+   width: 100%;
+   background: #9e9b9b;
+ }
+ .our_messages{
+   display: flex;
+   align-items: flex-end;
+   justify-content: flex-end;
+   flex-direction: column;
+   width: 100%;
+   height: 100%;
+ }
+ .messages{
+   width: 100%;
+   height: 100%;
+ }
+ .dialog{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+   width: 100%;
+ }
+
+ .your{
+   display: flex;
+   justify-content: flex-start;
+   align-items: flex-start;
+   width: 100%;
+   flex-direction: column-reverse;
+   margin-top: 10px;
+ }
+
+ .my{
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: flex-end;
+ }
+.message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 10px;
+  max-width: 300px;
+  min-height: 10px;
+  text-decoration: none;
+  position: relative;
+  color: #766AD0;
+  border: 1.5px solid #3A374C;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: .3s linear;
+}
+.message:before, .message:after, .text:before, .text:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: 15px;
+  height: 15px;
+  transition: .3s linear;
+}
+.message:before {
+  left: -1px;
+  top: -1px;
+  border-left: 1.5px solid #614DFF;
+  border-top: 1.5px solid #614DFF;
+}
+.message:after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 1.5px solid #614DFF;
+  border-right: 1.5px solid #614DFF;
+}
+.text:after {
+  right: -1px;
+  top: -1px;
+  border-right: 1.5px solid #614DFF;
+  border-top: 1.5px solid #614DFF;
+}
+.text:before {
+  left: -1px;
+  bottom: -1px;
+  border-bottom: 1.5px solid #614DFF;
+  border-left: 1.5px solid #614DFF;
+}
+.text{
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 0;
+}
+
+.righter{
+  margin-right: 7px;
+  margin-bottom: 10px;
+}
+.lefter{
+  padding-left: 7px;
+}
