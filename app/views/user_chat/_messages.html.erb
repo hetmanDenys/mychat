@@ -1,0 +1,22 @@
+<div class="our_messages">
+  <% if @your_messages.nil? && @my_messages.nil? %>
+    <div class="dialog">
+      <h1>Dialog is clear</h1>
+    </div>
+  <% else %>
+    <% @your_messages.each do |your| %>
+      <div class="your lefter" data-user_id=<% @user.id %> >
+        <div class="message lefter" data-current_user=<% current_user.id %>>
+          <p class="text"><%= your.body %></p>
+        </div>
+      </div>
+    <% end %>
+    <% @my_messages.each do |my| %>
+      <div class="my">
+        <div class="message righter">
+          <p class="text"><%= my.body %></p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
