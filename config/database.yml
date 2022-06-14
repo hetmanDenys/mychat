@@ -1,6 +1,14 @@
-development:
+default: &default
   adapter: postgresql
-  database: my_chat
-  pool: 5
+  encoding: unicode
   username: postgres
-  password: postgres
+  password: password
+  host: localhost
+  port: 5432
+  database: my_chat
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
