@@ -2,6 +2,18 @@ header {
   background: black;
   height: 50px;
 }
+table{
+  margin-left: 1300px;
+  margin-right: 1300px;
+}
+.for_table{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+th{
+  padding-right: 50px;
+}
 .link {
   background: #c6c3c3;
   height: 34px;
@@ -78,4 +90,15 @@ a:hover {
   display: block;
   height: 100%;
   width: 100%;
+}
+.container{
+  margin-top: 20px;
+  margin-bottom: 10px;
+  width: 10%;
+  height: 5%;
+  display: flex;
+  justify-content: center;
+}
+.title-lg{
+
 }

@@ -1,0 +1,21 @@
+<scroll-container>
+  <div class="our_messages" id="messages">
+    <% @messages.each do |message| %>
+      <% if message.sender_id == @user.id %>
+        <div class="your lefter" data-user_id=<% @user.id %> >
+          <div class="message lefter cf">
+            <p class="text color time"><%= l(message.created_at, format: :short ) %> </p>
+            <p class="text"><%= message.body %></p>
+          </div>
+        </div>
+      <% else %>
+        <div class="my">
+          <div class="message righter">
+            <p class="text"><%= message.body %></p>
+            <p class="text color time"><%= l(message.created_at, format: :short ) %> </p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</scroll-container>

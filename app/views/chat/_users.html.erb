@@ -1,0 +1,26 @@
+<div class="for_table">
+  <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Email</th>
+      <th colspan="1"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% counter = 1%>
+    <% users.each do |user|%>
+      <% if user != current_user %>
+        <tr>
+          <th scope="row"><%= counter %></th>
+          <% counter += 1 %>
+          <td><%= user.email %></td>
+          <td><%= link_to user_chat_path(user_id: user.id),class: "btn btn-outline-secondary btn-sm", :method => :get do %>
+              Messages
+            <% end %></td>
+        </tr>
+      <% end %>
+    <% end %>
+    </tbody>
+  </table>
+</div>
