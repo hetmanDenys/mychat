@@ -1,4 +1,4 @@
-<header>
+<header><% counter = 1%>
   <div class = "general">
     <div class="left">
       <div class = "hello">
@@ -6,23 +6,20 @@
       </div>
     </div>
     <div class="right">
-      <div class = "link">
-        <%= link_to 'Exit', destroy_user_session_path, data: {confirm: "Are you sure?"}, :method => :delete %>
+      <div class="margin">
+        <%= link_to 'Exit', destroy_user_session_path, data: {confirm: "Are you sure?"}, :method => :delete, class: "btn btn-light btn-outline-danger" %>
       </div>
     </div>
   </div>
-</header>r
-<div class="users">
-  <% @users.each do |user|%>
-    <% if user != current_user %>
-      <div class="user_block">
-        <%= link_to user_chat_path(user_id: user.id), :method => :get do %>
-          <div id="links">
-            <% @user_id = user.id %>
-              <%= user.id.to_i%>. <%= user.email %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  <% end %>
+</header>
+
+<%#= will_paginate %>
+<div class="alert alert-dark container" role="alert">
+  <h2 class="title-lg">
+    <%= @users.count - 1 %>
+    <%= inclination(@users.count - 1, 'друг', 'друга', 'друзей') %>
+  </h2>
 </div>
+<%= render 'users', users: @users, user_id: @user_id %>
+
+<%#= will_paginate %>
