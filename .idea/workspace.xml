@@ -2,8 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5118a773-0c7a-42cd-9453-6bb52963cb8f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/demo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/demo.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/javascript/channels/polling.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/chat/_users.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/user_chat/_message.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/user_chat/user_chat.turbo_stream.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/chat.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/chat.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/user_chat.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/user_chat.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/chat_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/chat_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/user_chat_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/user_chat_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/chat_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/chat_helper.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/channels/consumer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/channels/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/application.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/chat/chat.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/chat/chat.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/user_chat/user_chat.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/user_chat/user_chat.html.erb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +33,14 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--follow-tags" />
+        <option name="title" value="Current Branch" />
+      </GitPushTagMode>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -39,11 +60,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.ruby.settings.RubyActiveModuleSdkConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.ruby.settings.RubyActiveModuleSdkConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/models" />
