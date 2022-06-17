@@ -3,6 +3,9 @@ class MyChannel < Channel
     # stream_from "user_id=#{params[:user_id]}"
     stream_from "1"
   end
+  def received(data)
+    ActionCable.server.broadcast("1", data)
+  end
 end
 
 
