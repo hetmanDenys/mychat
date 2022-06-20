@@ -11,7 +11,7 @@ class UserChatController < ApplicationController
     @user = User.find params[:user_id]
     @messages = Message.where(recipient_id: @user.id, sender_id: current_user.id)
                        .or(Message.where(sender_id: @user.id, recipient_id: current_user.id))
-    @old_time = Message.last.created_at
+    @old_time = Message.last.created_at rescue 'newer'
     # ActionCable.server.broadcast("user_id=1", { body: Message.where(sender_id: @user.id, recipient_id: current_user.id) })
   end
 
