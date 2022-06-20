@@ -1,10 +1,10 @@
-function empty_form(){
-    let input = document.getElementById('input').value;
-    if(input === ''){
-        alert('You forgot to enter text.');
-    }
-}
-
+// function empty_form(){
+//     let input = document.getElementById('input').value;
+//     if(input === ''){
+//         alert('You forgot to enter text.');
+//     }
+// }
+//
 
 
 // document.addEventListener("DOMContentLoaded", (event) => {
@@ -12,7 +12,7 @@ function empty_form(){
 //     let data = data_id.dataset.id;
 //     const url = 'user_chat?user_id=' + data
 //
-//     // переделать на async await
+
 //     // interval
 //     //   fetch->GET->server (messages)
 //     //  update DOM if there are new messages
@@ -28,3 +28,4 @@ function empty_form(){
 //          console.log(sss)
 //     }, 2000);
 // });
+//
