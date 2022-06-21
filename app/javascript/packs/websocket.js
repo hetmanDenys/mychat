@@ -14,7 +14,7 @@ send_form.addEventListener("submit", async evt => {
     let form_for_websocket = document.getElementById("websocket_form")
     form_for_websocket.addEventListener("submit", async evt => {
         evt.preventDefault();
-        let data_for_post = document.getElementById('input_for_websocket').value
+        // let data_for_post = document.getElementById('input_for_websocket').value
     } );
 
 

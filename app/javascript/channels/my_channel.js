@@ -11,5 +11,5 @@ const myChannel = consumer.subscriptions.create({ channel: "MyChannel" }, {
     }
 })
 
-myChannel.send({ body: data_for_post })
+myChannel.send({ data_for_post })
 });
