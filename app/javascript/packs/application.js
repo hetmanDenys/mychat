@@ -5,8 +5,7 @@ import './websocket'
 import '../channels/consumer'
 import '../channels/my_channel'
 import '../fetch/fetch'
-
-// console.log(Handlebars)
+import '../channels/create_dom_elements'
 
 Rails.start()
 Turbolinks.start()
