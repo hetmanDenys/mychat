@@ -7,9 +7,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 const myChannel = consumer.subscriptions.create({ channel: "MyChannel" }, {
     received(data) {
-        console.log(data.body + "---------------------------------")
+        console.log(data.body + "  ---------------------------------")
     }
 })
 
-myChannel.send({ data_for_post })
+    const data_id = document.querySelector(".for_post");
+    let recipient_id = parseInt(data_id.dataset.id);
+    let form_for_websocket = document.getElementById("websocket_form")
+    form_for_websocket.addEventListener("submit", async evt => {
+        evt.preventDefault();
+        myChannel.send({ body: data_for_post, recipient_id: recipient_id })
+    } );
+
 });

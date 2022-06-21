@@ -23,17 +23,6 @@ class UserChatController < ApplicationController
     @old_time = Message.last.created_at rescue 'newer'
   end
 
-  def message_create
-    recipient = User.find params[:user_id]
-    @message = current_user.sent.create(recipient: recipient, body: params[:body])
-    @message.save
-    @old_time = l(Message.last.created_at, format: :short)
-
-    ActionCable.server.broadcast("my", { body: params[:body], current_user_id: current_user.id, created_at: @old_time })
-
-    head :ok
-  end
-
   private
 
   def message_params
