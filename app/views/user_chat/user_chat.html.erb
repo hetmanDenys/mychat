@@ -25,51 +25,33 @@
         <%= render 'message'  %>
     </div>
   </div>
-  <div class="input" data-id="<%= @user.id %>">
+  <div class="two_forms">
+    <div class="for_post" data-id="<%= @user.id %>">
+      <%= form_tag user_create_path, id: "message_form" do %>
+        <p>
+          <br>
+          <%= text_field_tag :input_message, class: "text_field", placeholder: "Write something...", type: "text", required: 'required'%>
+          <%= hidden_field_tag :user_id, @user.id %>
+        </p>
 
-    <%= form_tag user_create_path, id: "message_form" do %>
+        <p>
+          <%= button_tag 'Send', class: "btn btn-light btn-outline-secondary", id: "button_send_message"%>
+        </p>
+      <% end %>
+    </div>
+    <div class="for_websocket">
+    <%= form_tag message_create_path, id: "websocket_form" do %>
       <p>
         <br>
-        <%= text_field_tag :body, class: "text_field", placeholder: "Write something...", id: "input", type: "text", required: 'required'%>
+        <%= text_field_tag :input_for_websocket, class: "text_field", placeholder: "Write something...", type: "text", required: 'required'%>
         <%= hidden_field_tag :user_id, @user.id %>
       </p>
 
       <p>
-        <%= button_tag 'Send', class: "btn btn-light btn-outline-secondary", id: "button_send_message"%>
+        <%= button_tag 'Send', class: "btn btn-light btn-outline-secondary", id: "button_for_websocket"%>
       </p>
     <% end %>
+    </div>
   </div>
 </div>
 
-<script>
-    const data_id = document.querySelector(".input");
-    let data_set = data_id.dataset.id;
-    const url = '/user_create?user_id=' + data_set
-    const csrf = document.querySelector('meta[name="csrf-token"]').content;
-    console.log(csrf)
-
-
-    let send_form = document.getElementById("message_form")
-    send_form.addEventListener("submit", async evt => {
-        evt.preventDefault();
-        let data_for_post = document.getElementById('body').value
-        await postData(url, data_for_post)
-    } );
-
-
-    async function postData(url, data){
-        await fetch(url, {
-            method: 'POST',
-            mode: 'cors',
-            credentials: 'same-origin',
-            cache: 'no-cache',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': csrf
-            },
-            body: JSON.stringify(data)
-        });
-    }
-
-
-</script>
