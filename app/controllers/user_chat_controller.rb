@@ -3,8 +3,17 @@ class UserChatController < ApplicationController
     recipient = User.find params[:user_id]
     @message = current_user.sent.create(recipient: recipient, body: params[:body])
     @message.save
+    #
+    # @user = User.find params[:user_id]
+     @old_time = l(Message.last.created_at, format: :short)
+    # @messages += Message.where(recipient_id: @user.id, sender_id: current_user.id, created_at: @old_time)
+    #                                                      .or(Message.where(sender_id: @user.id, recipient_id: current_user.id, created_at: @old_time))
 
-    redirect_to user_chat_path(user_id: recipient.id)
+    ActionCable.server.broadcast("my", { body: params[:body], current_user_id: current_user.id, created_at: @old_time })
+
+    head :ok
+
+    # redirect_to user_chat_path(user_id: recipient.id)
   end
 
   def user_chat
@@ -14,10 +23,15 @@ class UserChatController < ApplicationController
     @old_time = Message.last.created_at rescue 'newer'
   end
 
-  def messages
-    # @user = User.find params[:user_id]
-    # @messages_after_update = Message.where(recipient_id: @user.id, sender_id: current_user.id)
-    # render json: @messages_after_update
+  def message_create
+    recipient = User.find params[:user_id]
+    @message = current_user.sent.create(recipient: recipient, body: params[:body])
+    @message.save
+    @old_time = l(Message.last.created_at, format: :short)
+
+    ActionCable.server.broadcast("my", { body: params[:body], current_user_id: current_user.id, created_at: @old_time })
+
+    head :ok
   end
 
   private
