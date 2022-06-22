@@ -6,16 +6,17 @@ class MyChannel < Channel
   end
 
   def receive(data)
-    user_id = data["recipient_id"]
     # ActionCable.server.broadcast("my", data)
+
+    user_id = data["recipient_id"]
     recipient = User.find user_id
+    current_user_id = data["current_user_id"]
+
     @message = current_user.sent.create(recipient: recipient, body: data["body"])
     @message.save
-    @old_time = l(Message.last.created_at, format: :short)
+    @old_time = I18n.l(@message.created_at, format: :short)
 
-    ActionCable.server.broadcast("my", { body: data["body"], current_user_id: current_user.id, created_at: @old_time })
-
-    head :ok
+    ActionCable.server.broadcast("MyChannel", { body: data["body"], current_user_id: current_user_id, created_at: @old_time,  })
   end
 end
 
