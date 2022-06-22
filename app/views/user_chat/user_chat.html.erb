@@ -18,7 +18,7 @@
 
 <div class="for_all">
   <div class="output">
-    <div class="name">
+    <div class="name" data-id="<%= current_user.id %>">
       <h3><%= @user.email %></h3>
     </div>
     <div class="messages">
@@ -39,7 +39,7 @@
         </p>
       <% end %>
     </div>
-    <div class="for_websocket">
+    <div class="for_websocket" data-id="<%= @user.id %>" >
     <%= form_tag message_create_path, id: "websocket_form" do %>
       <p>
         <br>
