@@ -9,7 +9,7 @@ class UserChatController < ApplicationController
     # @messages += Message.where(recipient_id: @user.id, sender_id: current_user.id, created_at: @old_time)
     #                                                      .or(Message.where(sender_id: @user.id, recipient_id: current_user.id, created_at: @old_time))
 
-    ActionCable.server.broadcast("my", { body: params[:body], current_user_id: current_user.id, created_at: @old_time })
+    ActionCable.server.broadcast("MyChannel", { body: params[:body], current_user_id: current_user.id, created_at: @old_time })
 
     head :ok
 
