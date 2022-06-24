@@ -1,8 +1,6 @@
 import consumer from "./consumer"
 import createDomElements from "./create_dom_elements";
 
-// const lefter = document.getElementsByClassName("lefter")
-// let user_id = lefter.dataset.id
 document.addEventListener("DOMContentLoaded", function(event) {
 
 

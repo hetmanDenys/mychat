@@ -1,8 +1,10 @@
 
 document.addEventListener("DOMContentLoaded", function(event) {
 const data_id = document.querySelector(".for_post");
-let data_set = data_id.dataset.id;
-const url = '/user_create?user_id=' + data_set;
+let user_id = data_id.dataset.id;
+const current_data_id = document.querySelector(".name");
+let current_user_id = current_data_id.dataset.id;
+const url = '/message_create';
 
 let send_form = document.getElementById("message_form")
 send_form.addEventListener("submit", async evt => {
@@ -21,9 +23,10 @@ async function postData(url, data){
         cache: 'no-cache',
         headers: {
             'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': csrf
+            'X-CSRF-TOKEN': csrf,
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxM30.GsOX5D9Wt758MGDgDCDzIuIjxRqIYDoJQnKq1jDLZY8'
         },
-        body: JSON.stringify({body: data,})
+        body: JSON.stringify({body: data, user_id: user_id, current_user_id: current_user_id})
     });
 }
 });
