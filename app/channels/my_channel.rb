@@ -8,8 +8,8 @@ class MyChannel < Channel
   def receive(data)
     # ActionCable.server.broadcast("my", data)
 
-    user_id = data["recipient_id"]
-    recipient = User.find user_id
+    recipient = User.find data["recipient_id"]
+    # TODO
     current_user_id = data["current_user_id"]
 
     @message = current_user.sent.create(recipient: recipient, body: data["body"])
