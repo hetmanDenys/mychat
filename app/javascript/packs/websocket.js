@@ -24,7 +24,7 @@ async function postData(url, data){
         headers: {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': csrf,
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxM30.GsOX5D9Wt758MGDgDCDzIuIjxRqIYDoJQnKq1jDLZY8'
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxOX0.e0D-zYI_-CQvX68awl_BEgbhiuPAsNG6BHdyTsXqTpQ'
         },
         body: JSON.stringify({body: data, user_id: user_id, current_user_id: current_user_id})
     });
