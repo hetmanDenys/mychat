@@ -70,7 +70,7 @@ body{
    display: block;
    width: 100%;
    height: 100%;
-   overflow-x:hidden;
+   overflow: scroll;
  }
  .dialog{
    display: flex;
@@ -185,5 +185,8 @@ body{
   align-content: center;
 }
 .for_websocket{
-  margin-left: 260px;
+  margin-left: 50px;
+}
+.for_fetch{
+  margin-left: 50px;
 }
