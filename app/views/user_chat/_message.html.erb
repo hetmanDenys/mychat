@@ -1,4 +1,3 @@
-<scroll-container>
   <div class="our_messages" id="messages">
     <% @messages.each do |message| %>
       <% if message.sender_id == @user.id %>
@@ -8,14 +7,17 @@
             <p class="text"><%= message.body %></p>
           </div>
         </div>
-      <% else %>
+      <% else %><script id="entry-template" type="text/x-handlebars-template">
         <div class="my">
           <div class="message righter">
             <p class="text"><%= message.body %></p>
             <p class="text color time"><%= l(message.created_at, format: :short ) %> </p>
           </div>
-        </div>
+        </div><div class="entry">
+    <h1>{{title}}</h1>
+    <h2>{{author.name}}</h2>
+  </div>
+        </script>
       <% end %>
     <% end %>
   </div>
-</scroll-container>

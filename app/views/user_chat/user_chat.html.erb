@@ -35,7 +35,7 @@
         </p>
 
         <p>
-          <%= button_tag 'Send', class: "btn btn-light btn-outline-secondary", id: "button_send_message"%>
+          <%= button_tag 'API', class: "btn btn-light btn-outline-secondary", id: "button_send_message"%>
         </p>
       <% end %>
     </div>
@@ -48,9 +48,22 @@
       </p>
 
       <p>
-        <%= button_tag 'Send', class: "btn btn-light btn-outline-secondary", id: "button_for_websocket"%>
+        <%= button_tag 'Websocket', class: "btn btn-light btn-outline-secondary", id: "button_for_websocket"%>
       </p>
     <% end %>
+    </div>
+    <div class="for_fetch" data-id="<%= @user.id %>">
+      <%= form_tag user_create_path, id: "fetch_form" do %>
+        <p>
+          <br>
+          <%= text_field_tag :input_for_fetch, class: "text_field", placeholder: "Write something...", type: "text", required: 'required'%>
+          <%= hidden_field_tag :user_id, @user.id %>
+        </p>
+
+        <p>
+          <%= button_tag 'Fetch', class: "btn btn-light btn-outline-secondary", id: "button_send_message"%>
+        </p>
+      <% end %>
     </div>
   </div>
 </div>
