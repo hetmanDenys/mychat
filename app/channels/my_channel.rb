@@ -11,6 +11,7 @@ class MyChannel < Channel
     recipient = User.find data["recipient_id"]
     # TODO
     current_user_id = data["current_user_id"]
+    current_user = User.find current_user_id
 
     @message = current_user.sent.create(recipient: recipient, body: data["body"])
     @message.save
