@@ -11,7 +11,8 @@ export default function createDomElements(data) {
                     {
                       time: (data.created_at),
                       body: m.body,
-                      align: ( recipient_id === data.current_user_id) ? "your" : "my",
+                      sender_id: m.sender_id,
+                      align: ( m.sender_id !== data.current_user_id) ? "your" : "my",
                     }
                 )),
                     recipient_id: recipient_id,
