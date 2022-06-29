@@ -1,23 +1,19 @@
   <div class="our_messages" id="messages">
     <% @messages.each do |message| %>
       <% if message.sender_id == @user.id %>
-        <div class="your lefter" data-user_id=<% @user.id %>>
-          <div class="message lefter cf" >
+        <div class="your" data-user_id=<% @user.id %>>
+          <div class="message">
             <p class="text color time"><%= l(message.created_at, format: :short ) %> </p>
             <p class="text"><%= message.body %></p>
           </div>
         </div>
-      <% else %><script id="entry-template" type="text/x-handlebars-template">
+      <% else %>
         <div class="my">
-          <div class="message righter">
+          <div class="message">
             <p class="text"><%= message.body %></p>
             <p class="text color time"><%= l(message.created_at, format: :short ) %> </p>
           </div>
-        </div><div class="entry">
-    <h1>{{title}}</h1>
-    <h2>{{author.name}}</h2>
-  </div>
-        </script>
+        </div>
       <% end %>
     <% end %>
   </div>
