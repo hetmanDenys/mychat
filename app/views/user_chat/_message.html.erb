@@ -10,8 +10,8 @@
       <% else %>
         <div class="my">
           <div class="message">
-            <p class="text"><%= message.body %></p>
             <p class="text color time"><%= l(message.created_at, format: :short ) %> </p>
+            <p class="text"><%= message.body %></p>
           </div>
         </div>
       <% end %>
