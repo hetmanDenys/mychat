@@ -1,6 +1,13 @@
 import Handlebars from 'handlebars'
 
 export default function createDomElements(data) {
+    function formatDate(date) {
+        let d = (new Date(date) + '').split(' ');
+        d[2] = d[2] + ' ';
+
+        return [ d[2], d[1], d[4]].join(' ');
+    }
+
     const data_id = document.querySelector(".for_post");
     let recipient_id = parseInt(data_id.dataset.id);
     console.log(data.current_user_id)
@@ -9,7 +16,7 @@ export default function createDomElements(data) {
                 dataBody: data.body,
                 messages: data.messages.map(m => (
                     {
-                      time: (data.created_at),
+                      time: formatDate(m.created_at),
                       body: m.body,
                       sender_id: m.sender_id,
                       align: ( m.sender_id !== data.current_user_id) ? "your" : "my",

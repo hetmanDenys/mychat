@@ -8,7 +8,7 @@ class Api::V1::MessageCreateController < Api::V1::ApplicationController
     @message.save
     @messages = Message.where(recipient_id: recipient.id, sender_id: current_user.id)
                   .or(Message.where(sender_id: recipient.id, recipient_id: current_user.id))
-    @old_time = I18n.l(Message.last.created_at, format: :short)
+    @old_time = I18n.l(Message.last.created_at, format: :message_time)
     ActionCable.server.broadcast("MyChannel", { body: params[:body], current_user_id: current_user.id, created_at: @old_time, messages: @messages })
   end
 
