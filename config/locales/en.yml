@@ -29,5 +29,11 @@
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
 
+
+
 en:
-  hello: "Hello world"
+  time:
+    formats:
+      message_time: "%d %b %H:%M:%S"
+
+

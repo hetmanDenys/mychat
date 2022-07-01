@@ -1,20 +1,20 @@
 class UserChatController < ApplicationController
   def create
-    recipient = User.find params[:message][:user_id]
-    @message = current_user.sent.create(recipient: recipient, body: message_params[:body])
+    recipient = User.find params[:user_id]
+    @message = current_user.sent.create(recipient: recipient, body: params[:body])
     @message.save
+     @old_time = l(Message.last.created_at, format: :short)
 
-    redirect_to user_chat_path(user_id: recipient.id)
+    ActionCable.server.broadcast("MyChannel", { body: params[:body], current_user_id: current_user.id, created_at: @old_time })
+
+    head :ok
   end
 
   def user_chat
     @user = User.find params[:user_id]
-    @my_messages = current_user.sent.where(recipient_id: @user.id)
-    @your_messages = current_user.received.where(sender_id: @user.id)
-  end
-
-  def save_messages
-    render json: user_chat
+    @messages = Message.where(recipient_id: @user.id, sender_id: current_user.id)
+                       .or(Message.where(sender_id: @user.id, recipient_id: current_user.id))
+    @old_time = Message.last.created_at rescue 'newer'
   end
 
   private
