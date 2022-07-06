@@ -18,6 +18,7 @@ gem 'rubocop-rails', require: false
 gem 'sass-rails', '>= 6'
 gem 'obscenity'
 gem 'uglifier'
+gem 'rubocop-rails', require: false
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
