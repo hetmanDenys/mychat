@@ -1,2 +1,6 @@
-module Api::V1::MessageCreateHelper
+module Api
+  module V1
+    module MessageCreateHelper
+    end
+  end
 end

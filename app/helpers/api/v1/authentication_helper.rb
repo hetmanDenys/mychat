@@ -1,2 +1,6 @@
-module Api::V1::AuthenticationHelper
+module Api
+  module V1
+    module AuthenticationHelper
+    end
+  end
 end

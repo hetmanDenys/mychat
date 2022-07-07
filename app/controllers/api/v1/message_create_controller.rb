@@ -1,20 +1,33 @@
-class Api::V1::MessageCreateController < Api::V1::ApplicationController
-  before_action :authorized
+module Api
+  module V1
+    class MessageCreateController < Api::V1::ApplicationController
+      before_action :users, only: [:create]
+      before_action :message_sent, only: [:create]
 
-  def create
-    recipient = User.find params[:user_id]
-    current_user = User.find params[:current_user_id]
-    @message = current_user.sent.create(recipient: recipient, body: params[:body])
-    @message.save
-    @messages = Message.where(recipient_id: recipient.id, sender_id: current_user.id)
-                  .or(Message.where(sender_id: recipient.id, recipient_id: current_user.id))
-    @old_time = I18n.l(Message.last.created_at, format: :short)
-    ActionCable.server.broadcast("MyChannel", { body: params[:body], current_user_id: current_user.id, created_at: @old_time, messages: @messages })
-  end
+      def create
+        @messages = Message.where(recipient_id: @recipient.id, sender_id: @current_user.id)
+                           .or(Message.where(sender_id: @recipient.id, recipient_id: @current_user.id))
+        @old_time = I18n.l(Message.last.created_at, format: :short)
+        ActionCable.server.broadcast('MyChannel',
+                                     { body: params[:body], current_user_id: @current_user.id, created_at: @old_time,
+                                       messages: @messages })
+      end
 
-  private
+      def users
+        @recipient = User.find params[:user_id]
+        @current_user = User.find params[:current_user_id]
+      end
 
-  def user_params
-    params.permit(:body, :user_id, :current_user_id)
+      def message_sent
+        @message = @current_user.sent.create(recipient: @recipient, body: params[:body])
+        @message.save
+      end
+
+      private
+
+      def user_params
+        params.permit(:body, :user_id, :current_user_id)
+      end
+    end
   end
 end

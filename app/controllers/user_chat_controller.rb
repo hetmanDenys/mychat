@@ -1,11 +1,11 @@
 class UserChatController < ApplicationController
-  def create
-    recipient = User.find params[:user_id]
-    @message = current_user.sent.create(recipient: recipient, body: params[:body])
-    @message.save
-     @old_time = l(Message.last.created_at, format: :short)
+  before_action :message_sent, only: [:create]
 
-    ActionCable.server.broadcast("MyChannel", { body: params[:body], current_user_id: current_user.id, created_at: @old_time })
+  def create
+    @recipient = User.find params[:user_id]
+    @old_time = l(Message.last.created_at, format: :short)
+    ActionCable.server.broadcast('MyChannel',
+                                 { body: params[:body], current_user_id: current_user.id, created_at: @old_time })
 
     head :ok
   end
@@ -15,7 +15,16 @@ class UserChatController < ApplicationController
     @messages = Message.where(recipient_id: @user.id, sender_id: current_user.id)
                        .or(Message.where(sender_id: @user.id, recipient_id: current_user.id))
     pp @messages
-    @old_time = Message.last.created_at rescue 'newer'
+    @old_time = begin
+      Message.last.created_at
+    rescue StandardError
+      'newer'
+    end
+  end
+
+  def message_sent
+    @message = current_user.sent.create(recipient: @recipient, body: params[:body])
+    @message.save
   end
 
   private
