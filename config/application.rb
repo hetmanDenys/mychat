@@ -13,6 +13,9 @@ module Demo
 
     HOSTNAME = ENV['HOSTNAME']
 
+    I18n.available_locales = %i[en ua]
+    config.i18n.default_locale = :ua
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

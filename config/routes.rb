@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   post '/login', to: 'api/v1/application#login'
   post :message_create, to: 'api/v1/message_create#create'
+  post '/', to: 'chat#chat'
   post 'auth_user' => 'authentication#authenticate_user'
   get :user_chat, to: 'user_chat#user_chat'
   post :user_create, to: 'user_chat#create'
