@@ -7,10 +7,10 @@
     </div>
     <div class="right">
       <div class="margin">
-        <%= link_to 'En', '/?locale=en', :method => :post, class: "btn btn-light btn-outline-info" %>
+        <%= link_to 'En', chat_url(locale: :en), :method => :post, class: "btn btn-light btn-outline-info" %>
       </div>
       <div class="margin">
-        <%= link_to 'Ua', '/?locale=ua', :method => :post, class: "btn btn-light btn-outline-info" %>
+        <%= link_to 'Uk', chat_url(locale: :uk), :method => :post, class: "btn btn-light btn-outline-info" %>
       </div>
       <div class="margin">
         <%= link_to t(:exit), destroy_user_session_path, data: {confirm: "Are you sure?"}, :method => :delete, class: "btn btn-light btn-outline-danger" %>

@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  # before_action :extract_locale_from_tld
   before_action :authenticate_user!
   around_action :switch_locale
 
@@ -8,7 +7,9 @@ class ApplicationController < ActionController::Base
     I18n.with_locale(locale, &action)
   end
 
-  def localization
-    pp params
+  def set_locale
+    if params[:locale].present?
+      cookies.permanent[:locale] = params[:locale] # save cookies
+    end
   end
 end
