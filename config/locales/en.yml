@@ -2,3 +2,11 @@
 en:
     welcome: "Welcome"
     exit: "Exit"
+    go_back: "Go back"
+    messages: "Messages"
+    email: "Email"
+    time:
+        formats:
+            message_time: "%d %b %H:%M:%S"
+    date:
+        abbr_month_names: [~, january, february, march, april, may, june, july, august, september, october, november, decembers]
