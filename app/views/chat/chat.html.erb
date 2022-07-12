@@ -2,12 +2,16 @@
   <div class = "general">
     <div class="left">
       <div class = "hello">
+
         <h3 class="user">Welcome, <%= current_user.email%></h3>
       </div>
     </div>
     <div class="right">
       <div class="margin">
         <%= link_to 'Exit', destroy_user_session_path, data: {confirm: "Are you sure?"}, :method => :delete, class: "btn btn-light btn-outline-danger" %>
+      </div>
+      <div class="margin">
+        <a href="/chat/<%=current_user.id.to_s%>/edit"><%= image_tag current_user.avatar, class: "avatar" %></a>
       </div>
     </div>
   </div>
