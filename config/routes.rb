@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :users, only: %i[update edit]
 
   # namespace :api do
   #   namespace :v1 do
@@ -12,7 +13,9 @@ Rails.application.routes.draw do
   post 'auth_user' => 'authentication#authenticate_user'
   get :user_chat, to: 'user_chat#user_chat'
   post :user_create, to: 'user_chat#create'
+  # patch :user_update, to: 'user_page#update'
   # post :message_create, to: 'user_chat#message_create'
-  get :chat, to: 'chat#chat'
-  root to: 'chat#chat'
+  get :user, to: 'users#show'
+  # get :user_page, to: 'user_page#user_page'
+  root to: 'users#show'
 end
