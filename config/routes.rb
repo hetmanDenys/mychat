@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :chat
+  resources :users, only: %i[update edit]
 
   # namespace :api do
   #   namespace :v1 do
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   post :user_create, to: 'user_chat#create'
   # patch :user_update, to: 'user_page#update'
   # post :message_create, to: 'user_chat#message_create'
-  get :chat, to: 'chat#chat'
+  get :user, to: 'users#show'
   # get :user_page, to: 'user_page#user_page'
-  root to: 'chat#chat'
+  root to: 'users#show'
 end

@@ -18,6 +18,7 @@ gem 'rubocop-rails', require: false
 gem 'sass-rails', '>= 6'
 gem 'obscenity'
 gem "aws-sdk-s3", require: false
+gem 'carrierwave', '~> 2.0'
 gem 'uglifier'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
