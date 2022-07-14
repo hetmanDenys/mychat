@@ -1,6 +1,8 @@
 module Api
   module V1
     class ApplicationController < ActionController::API
+      before_action :authorized
+      skip_before_action :authorized, only: %i[login]
       def encode_token(payload)
         JWT.encode(payload, 's3cr3t')
       end
@@ -10,7 +12,7 @@ module Api
       end
 
       def decoded_token
-        return if auth_header
+        return unless auth_header
 
         token = auth_header.split(' ')[1]
         begin
@@ -19,38 +21,34 @@ module Api
           nil
         end
       end
+
+      def set_user
+        return unless decoded_token
+
+        user_id = decoded_token[0]['user_id']
+        @current_user = User.find_by(id: user_id)
+      end
+
+      def authorized
+        render json: { message: 'Please log in' }, status: :unauthorized unless set_user
+      end
+
+      def login
+        @user = User.find_by(email: params[:email])
+
+        if @user&.valid_password?(params[:password])
+          token = encode_token({ user_id: @user.id })
+          render json: { token: token }
+        else
+          render json: { error: 'Invalid email or password' }
+        end
+      end
+
+      private
+
+      def login_params
+        params.permit(:email, :password)
+      end
     end
-
-    def logged_in_user
-      return if decoded_token
-
-      user_id = decoded_token[0]['user_id']
-      @user = User.find_by(id: user_id)
-    end
-  end
-
-  def logged_in?
-    !!logged_in_user
-  end
-
-  def authorized
-    render json: { message: 'Please log in' }, status: :unauthorized unless logged_in?
-  end
-
-  def login
-    @user = User.find_by(email: params[:email])
-
-    if @user&.valid_password?(params[:password])
-      token = encode_token({ user_id: @user.id })
-      render json: { token: token }
-    else
-      render json: { error: 'Invalid email or password' }
-    end
-  end
-
-  private
-
-  def login_params
-    params.permit(:email, :password)
   end
 end

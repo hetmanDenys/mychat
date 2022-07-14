@@ -15,6 +15,7 @@ gem 'jwt'
 gem 'rack-cors'
 gem 'rubocop-rails', require: false
 gem 'sass-rails', '>= 6'
+gem 'obscenity'
 gem 'uglifier'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'

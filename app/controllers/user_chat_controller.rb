@@ -14,7 +14,6 @@ class UserChatController < ApplicationController
     @user = User.find params[:user_id]
     @messages = Message.where(recipient_id: @user.id, sender_id: current_user.id)
                        .or(Message.where(sender_id: @user.id, recipient_id: current_user.id))
-    pp @messages
     @old_time = begin
       Message.last.created_at
     rescue StandardError
@@ -23,8 +22,8 @@ class UserChatController < ApplicationController
   end
 
   def message_sent
-    @message = current_user.sent.create(recipient: @recipient, body: params[:body])
-    @message.save
+    message = current_user.sent_messages.create(recipient: @recipient, body: params[:body])
+    message.save
   end
 
   private

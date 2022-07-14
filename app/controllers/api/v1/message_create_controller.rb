@@ -6,21 +6,23 @@ module Api
 
       def create
         @messages = Message.where(recipient_id: @recipient.id, sender_id: @current_user.id)
-                           .or(Message.where(sender_id: @recipient.id, recipient_id: @current_user.id))
+                          .or(Message.where(sender_id: @recipient.id, recipient_id: @current_user.id))
+        @messages.each do |m|
+          m.body = Obscenity.replacement(:stars).sanitize(m.body) if Obscenity.profane?(m.body)
+        end
         @old_time = I18n.l(Message.last.created_at, format: :short)
         ActionCable.server.broadcast('MyChannel',
-                                     { body: params[:body], current_user_id: @current_user.id, created_at: @old_time,
+                                     { current_user_id: @current_user.id, created_at: @old_time,
                                        messages: @messages })
       end
 
       def users
         @recipient = User.find params[:user_id]
-        @current_user = User.find params[:current_user_id]
       end
 
       def message_sent
-        @message = @current_user.sent.create(recipient: @recipient, body: params[:body])
-        @message.save
+        message = @current_user.sent_messages.create(recipient: @recipient, body: params[:body])
+        message.save
       end
 
       private
