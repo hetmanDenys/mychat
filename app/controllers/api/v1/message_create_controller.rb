@@ -19,14 +19,19 @@ module Api
       end
 
       def message_sent
-        @message = @current_user.sent.create(recipient: @recipient, body: params[:body])
+        if params[:file]
+        @message = @current_user.sent.create(recipient: @recipient, body: params[:body],
+                                             file: params[:file].original_filename)
+        else
+          @message = @current_user.sent.create(recipient: @recipient, body: params[:body])
+        end
         @message.save
       end
 
       private
 
       def user_params
-        params.permit(:body, :user_id, :current_user_id)
+        params.permit(:body, :user_id, :current_user_id, :file)
       end
     end
   end

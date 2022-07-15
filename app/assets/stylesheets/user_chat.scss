@@ -83,7 +83,7 @@ body{
  .your{
    display: flex;
    justify-content: flex-start;
-   align-items: flex-start;
+   align-items: center;
    width: 100%;
    flex-direction: column-reverse;
    margin-top: 10px;
@@ -91,10 +91,12 @@ body{
 
  .my{
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: row;
   width: 100%;
   justify-content: flex-end;
-  align-items: flex-end;
+  align-items: center;
+   margin-top: 5px;
+   margin-bottom: 5px;
  }
 
 .message {
@@ -188,4 +190,7 @@ body{
   width: 45px;
   height: 45px;
   border-radius: 50%;
+}
+.small{
+  margin-right: 5px;
 }

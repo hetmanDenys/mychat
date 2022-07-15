@@ -7,6 +7,15 @@
     </div>
     <div class="right">
       <div class="margin">
+        <a href="/users/<%=current_user.id.to_s%>/edit">
+          <% if current_user.avatar.url %>
+            <%= image_tag current_user.avatar.url(:thumb), class: "avatar" %>
+          <% else %>
+            <%= button_tag 'Profile', class: "btn btn-primary btn-xs" %>
+          <% end %>
+        </a>
+      </div>
+      <div class="margin">
       <%= link_to 'Go back', root_path, class: "btn btn-light btn-outline-warning"%>
     </div>
       <div class="margin">
@@ -27,41 +36,28 @@
   </div>
   <div class="two_forms">
     <div class="for_post" data-id="<%= @user.id %>">
-      <%= form_tag user_create_path, id: "message_form" do %>
+      <%= bootstrap_form_with method: :post, id: "message_form" do |f| %>
         <p>
           <br>
-          <%= text_field_tag :input_message, class: "text_field", placeholder: "Write something...", type: "text", required: 'required'%>
+          <%= f.text_field :input_message, class: "text_field", placeholder: "Write something...", type: "text", required: 'required'%>
+          <%= f.file_field :file, name: "file", accept: "/home/user/RubymineProjects/demo/app/assets/images/*", type: 'file' %>
           <%= hidden_field_tag :user_id, @user.id %>
         </p>
 
         <p>
-          <%= button_tag 'API', class: "btn btn-light btn-outline-secondary", id: "button_send_message"%>
+          <%= f.submit 'API', class: "btn btn-light btn-outline-primary", id: "button_send_message"%>
         </p>
       <% end %>
     </div>
     <div class="for_websocket" data-id="<%= @user.id %>" >
-    <%= form_tag message_create_path, id: "websocket_form" do %>
-      <p>
-        <br>
-        <%= text_field_tag :input_for_websocket, class: "text_field", placeholder: "Write something...", type: "text", required: 'required'%>
-        <%= hidden_field_tag :user_id, @user.id %>
-      </p>
-
-      <p>
-        <%= button_tag 'Websocket', class: "btn btn-light btn-outline-secondary", id: "button_for_websocket"%>
-      </p>
-    <% end %>
-    </div>
-    <div class="for_fetch" data-id="<%= @user.id %>">
-      <%= form_tag user_create_path, id: "fetch_form" do %>
+      <%= bootstrap_form_with url: message_create_path, method: :post, id: "websocket_form" do |f| %>
         <p>
           <br>
-          <%= text_field_tag :input_for_fetch, class: "text_field", placeholder: "Write something...", type: "text", required: 'required'%>
+          <%= f.text_field :input_for_websocket, class: "text_field", placeholder: "Write something...", type: "text", required: 'required'%>
           <%= hidden_field_tag :user_id, @user.id %>
         </p>
-
         <p>
-          <%= button_tag 'Fetch', class: "btn btn-light btn-outline-secondary", id: "button_send_message"%>
+          <%= f.submit 'Websocket', class: "btn btn-light btn-outline-primary", id: "button_for_websocket"%>
         </p>
       <% end %>
     </div>

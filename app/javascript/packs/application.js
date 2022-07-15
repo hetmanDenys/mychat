@@ -4,7 +4,6 @@ import * as ActiveStorage from "@rails/activestorage"
 import './websocket'
 import '../channels/consumer'
 import '../channels/my_channel'
-import '../fetch/fetch'
 
 // console.log(Handlebars)
 
