@@ -7,6 +7,9 @@
     </div>
     <div class="right">
       <div class="margin">
+        <a href="/users/<%=current_user.id.to_s%>/edit"><%= image_tag current_user.avatar.url(:thumb), class: "avatar" %></a>
+      </div>
+      <div class="margin">
         <%= link_to t(:go_back), root_path, class: "btn btn-light btn-outline-warning" %>
       </div>
     </div>

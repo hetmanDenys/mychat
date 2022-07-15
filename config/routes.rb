@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: %i[update edit]
 
-  # namespace :api do
-  #   namespace :v1 do
+  # namespace :Api do
+  #   namespace :V1 do
   #     post :message_create, to: 'api/v1/message_create#create'
   #   end
   # end
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post :message_create, to: 'api/v1/message_create#create'
   post 'auth_user' => 'authentication#authenticate_user'
   get :user_chat, to: 'user_chat#user_chat'
+  get :download_file, to: 'user_chat#download'
   post :user_create, to: 'user_chat#create'
   # patch :user_update, to: 'user_page#update'
   # post :message_create, to: 'user_chat#message_create'
