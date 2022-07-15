@@ -5,7 +5,8 @@ class UserChatController < ApplicationController
     @recipient = User.find params[:user_id]
     @old_time = l(Message.last.created_at, format: :short)
     ActionCable.server.broadcast('MyChannel',
-                                 { body: params[:body], current_user_id: current_user.id, created_at: @old_time })
+                                 { body: params[:body], current_user_id: current_user.id, created_at: @old_time,
+                                   file: params[:file] })
 
     head :ok
   end
@@ -22,13 +23,14 @@ class UserChatController < ApplicationController
   end
 
   def message_sent
-    message = current_user.sent_messages.create(recipient: @recipient, body: params[:body])
+    message = current_user.sent_messages.create(recipient: @recipient, body: params[:body], file: params[:file])
+    pp params[:file].tempfile
     message.save
   end
 
   private
 
   def message_params
-    params.require(:message).permit(:body)
+    params.require(:message).permit(:body, :file)
   end
 end

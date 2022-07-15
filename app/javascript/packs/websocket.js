@@ -5,16 +5,21 @@ let user_id = data_id.dataset.id;
 const current_data_id = document.querySelector(".name");
 let current_user_id = current_data_id.dataset.id;
 const url = '/message_create';
+// const image_upload = document.getElementById('pictures');
+// const results = document.getElementsByClassName('messages');
 
-let send_form = document.getElementById("message_form")
-send_form.addEventListener("submit", async evt => {
-    evt.preventDefault();
+let form = document.getElementById("message_form")
+form.addEventListener('submit', async evt => {
+    evt.preventDefault()
+    let formData = new FormData(form)
     let data_for_post = document.getElementById('input_message').value
-    await postData(url, data_for_post)
+    formData.append('body', data_for_post)
+    formData.append('current_user_id', current_user_id)
+    await postData(url, formData)
 } );
 
 
-async function postData(url, data){
+async function postData(url, formData){
     const csrf = document.querySelector('meta[name="csrf-token"]').content;
     await fetch(url, {
         method: 'POST',
@@ -22,11 +27,13 @@ async function postData(url, data){
         credentials: 'same-origin',
         cache: 'no-cache',
         headers: {
-            'Content-Type': 'application/json',
+            // 'Content-Type': 'multipart/form-data',
             'X-CSRF-TOKEN': csrf,
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1NH0.CfcpNu-OYxfqRSjQhu_eAgtpSoOMf89M663eytigyFs'
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1Nn0.bJvurScFSUTs_j_vTaUqiAdAUa1vVXl3g8WZIa7fTOY'
         },
-        body: JSON.stringify({body: data, user_id: user_id, current_user_id: current_user_id})
+        body: formData
     });
 }
 });
+
+        // JSON.stringify({body: data, user_id: user_id, current_user_id: current_user_id, file: formData})

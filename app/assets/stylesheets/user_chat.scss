@@ -91,7 +91,7 @@ body{
 
  .my{
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: row;
   width: 100%;
   justify-content: flex-end;
   align-items: flex-end;
@@ -188,4 +188,7 @@ body{
   width: 45px;
   height: 45px;
   border-radius: 50%;
+}
+.small{
+
 }

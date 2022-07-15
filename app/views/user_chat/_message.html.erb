@@ -2,6 +2,11 @@
     <% @messages.each do |message| %>
       <% if message.sender_id == @user.id %>
         <div class="your" data-user_id=<% @user.id %>>
+          <% if message.file %>
+            <div id="for_file_downloading">
+              <%= link_to message.file, '/files/' + message.file, class: "link link-info", download: message.file %>
+            </div>
+          <% end %>
           <div class="message">
             <p class="text color time"><%= l(message.created_at, format: :short ) %> </p>
             <p class="text"><%= Obscenity.replacement(:stars).sanitize(message.body) %></p>
@@ -9,6 +14,11 @@
         </div>
       <% else %>
         <div class="my">
+          <% if message.file %>
+            <div id="for_file_downloading">
+              <%= link_to message.file, '/files/' + message.file, class: "link link-info", download: message.file %>
+            </div>
+          <% end %>
           <div class="message">
             <p class="text"><%= Obscenity.replacement(:stars).sanitize(message.body) %></p>
             <p class="text color time"><%= l(message.created_at, format: :short ) %> </p>
