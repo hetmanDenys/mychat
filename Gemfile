@@ -1,3 +1,4 @@
+gem 'dotenv-rails', groups: %i[development test]
 source 'http://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -15,6 +16,7 @@ gem 'jwt'
 gem 'rack-cors'
 gem 'rubocop-rails', require: false
 gem 'sass-rails', '>= 6'
+gem 'obscenity'
 gem 'uglifier'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
