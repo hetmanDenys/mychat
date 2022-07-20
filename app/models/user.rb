@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   self.skip_session_storage = %i[http_auth params_auth]
   validates :email, presence: true, length: { minimum: 5 }
+  paginates_per 5
 end

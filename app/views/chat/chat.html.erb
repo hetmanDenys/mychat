@@ -1,8 +1,8 @@
-<header><% counter = 1%>
+<header class="header">
   <div class = "general">
     <div class="left">
       <div class = "hello">
-        <h3 class="user">Welcome, <%= current_user.email%></h3>
+        <h3 class="user"><%= current_user.email%></h3>
       </div>
     </div>
     <div class="right">
@@ -13,13 +13,14 @@
   </div>
 </header>
 
-<%#= will_paginate %>
-<div class="alert alert-dark container" role="alert">
-  <h2 class="title-lg">
-    <%= @users.count - 1 %>
-    <%= inclination(@users.count - 1, 'друг', 'друга', 'друзей') %>
-  </h2>
+<div class="chat-padding">
+  <%= render 'users', users: @users_show, user_id: @user_id %>
 </div>
-<%= render 'users', users: @users, user_id: @user_id %>
 
-<%#= will_paginate %>
+  <div class="chat-pagination">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <%= paginate @users_show %>
+      </ul>
+    </nav>
+  </div>

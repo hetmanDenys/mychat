@@ -1,9 +1,12 @@
 class ChatController < ApplicationController
-  # before_action :authorized, only: [:auto_login]
+
+  before_action only: [:auto_login]
 
   def chat
-    @users = User.all
+    @first_user = User.first
+    @user_count = User.count
     @user_id = current_user.id
+    @users_show = User.order(:id).page params[:page]
   end
 
   def auto_login
