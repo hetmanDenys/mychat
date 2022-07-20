@@ -20,15 +20,17 @@ export default function createDomElements(data) {
             };
     const template = Handlebars.compile(
         ` 
-            <div class="our_messages" id="messages">
-                {{#each messages}}
-                        <div class='{{this.align}}'>
-                            <div class="message" >
-                                <p class="text color time">{{this.time}} </p>
-                                <p class="text">{{this.body}}</p>
-                            </div>
-                        </div> 
-                {{/each}}
+            <div class="our_messages scroll_messages" id="messages">
+                <div class="s">
+                    {{#each messages}}
+                            <div class='{{this.align}}'>
+                                <div class="alert alert-primary message" >
+                                    <p class="text color time">{{this.time}} </p>
+                                    <p class="text">{{this.body}}</p>
+                                </div>
+                            </div> 
+                    {{/each}}
+                </div>
             </div>
         `
         )

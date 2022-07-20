@@ -8,7 +8,11 @@
     </tr>
     </thead>
     <tbody>
-    <% counter = 1%>
+    <% if params[:page].to_i === 0%>
+      <% counter = 1 %>
+    <% else %>
+      <% counter = 1 + (5 * (params[:page].to_i - 1)) %>
+    <% end %>
     <% users.each do |user|%>
       <% if user != current_user %>
         <tr>
@@ -17,7 +21,7 @@
           <td><%= user.email %></td>
           <td><%= link_to user_chat_path(user_id: user.id),class: "btn btn-outline-secondary btn-sm", :method => :get do %>
               Messages
-            <% end %></td>
+          <% end %></td>
         </tr>
       <% end %>
     <% end %>

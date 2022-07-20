@@ -14,6 +14,7 @@ gem 'puma', '~> 5.0'
 gem 'bcrypt'
 gem 'jwt'
 gem 'rack-cors'
+gem 'kaminari'
 gem 'rubocop-rails', require: false
 gem 'sass-rails', '>= 6'
 gem 'obscenity'

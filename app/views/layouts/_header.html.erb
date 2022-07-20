@@ -1,0 +1,17 @@
+<header class="header">
+  <div class = "general">
+    <div class="left">
+      <div class = "hello">
+        <h3 class="user"><%= current_user.email%></h3>
+      </div>
+    </div>
+    <div class="right">
+      <div class="margin">
+        <%= link_to 'Go back', root_path, class: "btn btn-light btn-outline-warning"%>
+      </div>
+      <div class="margin">
+        <%= link_to 'Exit', destroy_user_session_path, data: {confirm: "Are you sure?"}, :method => :delete, class: "btn btn-light btn-outline-danger" %>
+      </div>
+    </div>
+  </div>
+</header>

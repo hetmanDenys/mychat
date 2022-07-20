@@ -1,10 +1,15 @@
-header {
-  background: black;
-  height: 50px;
-}
+
 table{
   margin-left: 1300px;
   margin-right: 1300px;
+}
+.chat-padding{
+  padding-top: 50px;
+}
+.chat-pagination{
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 .for_table{
   display: flex;
@@ -43,13 +48,6 @@ a:hover {
   text-decoration: none;
 }
 
-.link a{
-  margin-top: 12px;
-  height: 100%;
-  text-align: center;
-  width: 100%;
-}
-
 .right{
   display: flex;
   flex-direction: row;
@@ -72,14 +70,14 @@ a:hover {
   justify-content: center;
   align-items: center;
   min-height: 50px;
-  min-width: 0px;
+  min-width: 0;
   margin-top: 10px;
   flex-wrap: wrap;
 }
 #links{
   flex-wrap: wrap;
   min-height: 50px;
-  min-width: 0px;
+  min-width: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -98,7 +96,4 @@ a:hover {
   height: 5%;
   display: flex;
   justify-content: center;
-}
-.title-lg{
-
 }
