@@ -26,7 +26,7 @@ export default function createDomElements(data) {
                             <div class='{{this.align}}'>
                                 <div class="alert alert-primary message" >
                                     <p class="text color time">{{this.time}} </p>
-                                    <p class="text">{{this.body}}</p>
+                                    <p class="text content">{{this.body}}</p>
                                 </div>
                             </div> 
                     {{/each}}

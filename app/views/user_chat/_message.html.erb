@@ -4,13 +4,13 @@
         <div class="your" data-user_id=<% @user.id %>>
           <div class= "alert alert-primary message">
             <p class="text color time"><%= l(message.created_at, format: :short ) %> </p>
-            <p class="text"><%= Obscenity.replacement(:stars).sanitize(message.body) %></p>
+            <p class="text content"><%= Obscenity.replacement(:stars).sanitize(message.body) %></p>
           </div>
         </div>
       <% else %>
         <div class="my">
           <div class="alert alert-primary message">
-            <p class="text"><%= Obscenity.replacement(:stars).sanitize(message.body) %></p>
+            <p class="text content"><%= Obscenity.replacement(:stars).sanitize(message.body) %></p>
             <p class="text color time"><%= l(message.created_at, format: :short ) %> </p>
           </div>
         </div>

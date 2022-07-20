@@ -15,7 +15,7 @@
     <% end %>
     <% users.each do |user|%>
       <% if user != current_user %>
-        <tr>
+        <tr class="<%= cycle('white', 'blue', 'dark-blue') -%>">
           <th scope="row"><%= counter %></th>
           <% counter += 1 %>
           <td><%= user.email %></td>

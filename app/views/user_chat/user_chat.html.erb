@@ -1,5 +1,20 @@
-
-<%= render 'layouts/header'  %>
+<header class="header">
+  <div class = "general">
+    <div class="left">
+      <div class = "hello">
+        <h3 class="user"><%= current_user.email%></h3>
+      </div>
+    </div>
+    <div class="right">
+      <div class="margin">
+        <%= link_to 'Go back', root_path, class: "btn btn-light btn-outline-warning"%>
+      </div>
+      <div class="margin">
+        <%= link_to 'Exit', destroy_user_session_path, data: {confirm: "Are you sure?"}, :method => :delete, class: "btn btn-light btn-outline-danger" %>
+      </div>
+    </div>
+  </div>
+</header>
 
 <div class="for_all border border-primary border-3 rounded-6">
   <div class="output rounded-4">
@@ -15,12 +30,12 @@
       <%= form_tag user_create_path, id: "message_form" do %>
         <p>
           <br>
-          <%= text_field_tag :input_message, class: "text_field", placeholder: "Write something...", type: "text", required: 'required'%>
+          <%= text_field_tag :input_message, class: "text_field", placeholder: "Write something...", type: "text", required: 'required' %>
           <%= hidden_field_tag :user_id,  @user.id %>
         </p>
 
         <p>
-          <%= button_tag 'API', class: "btn btn-info", id: "button_send_message"%>
+          <%= button_tag 'API', class: "btn btn-info", id: "button_send_message" %>
         </p>
       <% end %>
     </div>
@@ -28,12 +43,12 @@
     <%= form_tag message_create_path, id: "websocket_form" do %>
       <p>
         <br>
-        <%= text_field_tag :input_for_websocket, class: "text_field", placeholder: "Write something...", type: "text", required: 'required'%>
+        <%= text_field_tag :input_for_websocket, class: "text_field", placeholder: "Write something...", type: "text", required: 'required' %>
         <%= hidden_field_tag :user_id, @user.id %>
       </p>
 
       <p>
-        <%= button_tag 'Websocket', class: "btn btn-info", id: "button_for_websocket"%>
+        <%= button_tag 'Websocket', class: "btn btn-info", id: "button_for_websocket" %>
       </p>
     <% end %>
     </div>
@@ -41,12 +56,12 @@
       <%= form_tag user_create_path, id: "fetch_form" do %>
         <p>
           <br>
-          <%= text_field_tag :input_for_fetch, class: "text_field", placeholder: "Write something...", type: "text", required: 'required'%>
+          <%= text_field_tag :input_for_fetch, class: "text_field", placeholder: "Write something...", type: "text", required: 'required' %>
           <%= hidden_field_tag :user_id, @user.id %>
         </p>
 
         <p>
-          <%= button_tag 'Fetch', class: "btn btn-info", id: "button_send_message"%>
+          <%= button_tag 'Fetch', class: "btn btn-info", id: "button_send_message" %>
         </p>
       <% end %>
     </div>

@@ -43,11 +43,6 @@ th{
  color: #c6c3c3;
 }
 
-a:hover {
-  color: black;
-  text-decoration: none;
-}
-
 .right{
   display: flex;
   flex-direction: row;
@@ -96,4 +91,13 @@ a:hover {
   height: 5%;
   display: flex;
   justify-content: center;
+}
+.blue{
+  background-color: #ebfdf4;
+}
+.white{
+  background-color: #f1fdfd;
+}
+.dark-blue{
+  background-color: #e3fdf0;
 }
