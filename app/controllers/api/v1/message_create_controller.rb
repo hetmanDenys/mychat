@@ -29,12 +29,12 @@ module Api
 
       private
 
-      def users
-        @recipient = User.find params[:user_id]
-      end
-
       def user_params
         params.permit(:body, :user_id, :current_user_id, :file)
+      end
+
+      def users
+        @recipient = User.find params[:user_id]
       end
     end
   end

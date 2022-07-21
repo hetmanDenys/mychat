@@ -14,6 +14,7 @@ gem 'puma', '~> 5.0'
 gem 'aws-sdk-s3', require: false
 gem 'bcrypt'
 gem 'carrierwave', '~> 2.0'
+gem 'carrierwave-imageoptimizer'
 gem 'jwt'
 gem 'mini_magick'
 gem 'rack-cors'
@@ -22,6 +23,7 @@ gem 'sass-rails', '>= 6'
 gem 'obscenity'
 gem "aws-sdk-s3", require: false
 gem 'carrierwave', '~> 2.0'
+gem 'exifr'
 gem 'uglifier'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'

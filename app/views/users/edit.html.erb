@@ -2,13 +2,19 @@
   <div class = "general">
     <div class="left">
       <div class = "hello">
-        <h3 class="user"><%= current_user.email %></h3>
+        <h3 class="user"><%= current_user.user_name || current_user.email %></h3>
       </div>
     </div>
     <div class="right">
-      <div class="margin">
-        <a href="/users/<%=current_user.id.to_s%>/edit"><%= image_tag current_user.avatar.url(:thumb), class: "avatar" %></a>
-      </div>
+      <% if current_user.avatar.file %>
+        <div class="margin">
+          <%= link_to image_tag(current_user.avatar.url(:thumb), class: "avatar"), { action: "edit", controller: "users", id: current_user.id } %>
+        </div>
+      <% else %>
+        <div class="margin">
+          <%= link_to 'Profile', action: "edit", controller: "users", id: current_user.id %>
+        </div>
+      <% end %>
       <div class="margin">
         <%= link_to t(:go_back), root_path, class: "btn btn-light btn-outline-warning" %>
       </div>
@@ -19,7 +25,10 @@
 <div class="for_user_page">
   <%= form_for @user, url: { action: :update }, method: :patch do |f| %>
     <div class="row">
-      <%= f.text_field :user_name, class: "text_field", placeholder: current_user.user_name, type: "text", required: 'required' %>
+      <%= f.text_field :user_name, class: "text_field is-invalid", placeholder: current_user.user_name, type: "text", required: 'required' %>
+      <% if flash[:messages] %>
+        <h6 class="text-danger"><%= flash[:messages] %></h6>
+      <% end %>
       <%= f.text_field :age, class: "text_field", placeholder: "Age", type: "text", required: 'required' %>
       <%= f.text_field :country, class: "text_field", placeholder: "Country", type: "text", required: 'required' %>
       <%= f.file_field :avatar %>

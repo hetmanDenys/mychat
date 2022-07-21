@@ -10,6 +10,7 @@ table{
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 50px;
 }
 th{
   padding-right: 50px;
@@ -24,16 +25,6 @@ th{
   align-items: center;
   margin-right: 10px;
 }
-.hello{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  }
-.general {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 .user{
  color: #c6c3c3;
 }
@@ -43,17 +34,6 @@ th{
   height: 100%;
   text-align: center;
   width: 100%;
-}
-
-.right{
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
-
-.left{
-  display: flex;
-  justify-content: flex-start;
 }
 .users{
   display: flex;
@@ -110,12 +90,4 @@ th{
 .row{
   display: flex;
   flex-direction: column;
-}
-.avatar {
-  vertical-align: middle;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  margin-left: 1500px;
-  margin-bottom: 20px;
 }

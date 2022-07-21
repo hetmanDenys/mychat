@@ -5,6 +5,6 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable
 
-  # self.skip_session_storage = %i[http_auth params_auth]
-  validates :email, presence: true, length: { minimum: 5 }
+  validates_presence_of     :email
+  validates_uniqueness_of   :email
 end

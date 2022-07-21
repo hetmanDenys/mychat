@@ -24,7 +24,6 @@ class UserChatController < ApplicationController
 
   def message_sent
     message = current_user.sent_messages.create(recipient: @recipient, body: params[:body], file: params[:file])
-    pp params[:file].tempfile
     message.save
   end
 

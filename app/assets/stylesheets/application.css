@@ -184,6 +184,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 15px;
 }
 .general {
     display: flex;
@@ -201,4 +202,25 @@ header {
     height: 100%;
     text-align: center;
     width: 100%;
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-left: 1500px;
+    margin-bottom: 20px;
+}
+.for_avatar{
+    width: 50px;
+}
+.margin{
+    margin-right: 10px;
+    margin-top: 3px;
+}
+.right{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }
