@@ -2,13 +2,19 @@
   <div class = "general">
     <div class="left">
       <div class = "hello">
-        <h3 class="user"><%= current_user.email%></h3>
+        <h3 class="user"><%= current_user.user_name || current_user.email %></h3>
       </div>
     </div>
     <div class="right">
-      <div class="margin">
-        <a href="/users/<%=current_user.id.to_s%>/edit"><%= image_tag current_user.avatar.url(:thumb), class: "avatar" %></a>
-      </div>
+      <% if current_user.avatar.file %>
+        <div class="margin">
+          <%= link_to image_tag(current_user.avatar.url(:thumb), class: "avatar"), { action: "edit", controller: "users", id: current_user.id } %>
+        </div>
+      <% else %>
+        <div class="margin">
+          <%= link_to 'Profile', action: "edit", controller: "users", id: current_user.id %>
+        </div>
+      <% end %>
       <div class="margin">
       <%= link_to 'Go back', root_path, class: "btn btn-light btn-outline-warning"%>
     </div>
@@ -30,40 +36,23 @@
   </div>
   <div class="two_forms">
     <div class="for_post" data-id="<%= @user.id %>">
-      <%#= form_tag user_create_path, id: "message_form" do %>
       <%= bootstrap_form_with model: @model_name, url: user_create_path, method: :post, id: "message_form" do |f| %>
         <p>
           <br>
-          <%#= text_field_tag :input_message, class: "text_field", placeholder: "Write something...", type: "text", required: 'required'%>
           <%= f.text_field :input_message, class: "text_field", placeholder: "Write something...", type: "text", required: 'required'%>
           <%= f.file_field :file, name: "file", accept: "/home/user/RubymineProjects/demo/app/assets/images/*", type: 'file' %>
-          <%= hidden_field_tag :user_id, @user.id %>
         </p>
 
         <p>
           <%= f.submit 'API', class: "btn btn-light btn-outline-primary", id: "button_send_message"%>
-          <%#= button_tag 'API', class: "btn btn-light btn-outline-secondary", id: "button_send_message"%>
         </p>
       <% end %>
     </div>
     <div class="for_websocket" data-id="<%= @user.id %>" >
-    <%#= form_tag message_create_path, id: "websocket_form" do %>
-<!--      <p>-->
-<!--        <br>-->
-        <%#= text_field_tag :input_for_websocket, class: "text_field", placeholder: "Write something...", type: "text", required: 'required'%>
-        <%#= hidden_field_tag :user_id, @user.id %>
-<!--      </p>-->
-
-<!--      <p>-->
-        <%#= button_tag 'Websocket', class: "btn btn-light btn-outline-primary", id: "button_for_websocket"%>
-<!--      </p>-->
-    <%# end %>
       <%= bootstrap_form_with model: @model_name, url: message_create_path, method: :patch, id: "websocket_form" do |f| %>
         <p>
           <br>
           <%= f.text_field :input_for_websocket, class: "text_field", placeholder: "Write something...", type: "text", required: 'required'%>
-          <%#= f.file_field :picture%>
-          <%= hidden_field_tag :user_id, @user.id %>
         </p>
 
         <p>

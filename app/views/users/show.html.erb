@@ -6,9 +6,15 @@
       </div>
     </div>
     <div class="right">
-      <div class="margin">
-        <a href="/users/<%=current_user.id.to_s%>/edit"><%= image_tag current_user.avatar.url(:thumb), class: "avatar" %></a>
-      </div>
+      <% if current_user.avatar.file %>
+        <div class="margin">
+          <%= link_to image_tag(current_user.avatar.url(:thumb), class: "avatar"), { action: "edit", controller: "users", id: current_user.id } %>
+        </div>
+      <% else %>
+        <div class="margin">
+          <%= link_to 'Profile', action: "edit", controller: "users", id: current_user.id %>
+        </div>
+      <% end %>
       <div class="margin">
         <%= link_to 'Exit', destroy_user_session_path, data: {confirm: "Are you sure?"}, :method => :delete, class: "btn btn-light btn-outline-danger" %>
       </div>
@@ -17,9 +23,6 @@
 </header>
 
 <%#= will_paginate %>
-<div class="alert alert-dark container" role="alert">
-
-</div>
 
 <%= render 'users', users: @users %>
 

@@ -1,12 +1,11 @@
 class AvatarUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
+  include CarrierWave::ImageOptimizer
 
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
-
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
@@ -31,9 +30,21 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
   version :thumb do
     process resize_to_fit: [100, 100]
+    process :strip
+    process optimize: [{ quality: 88 }]
+    process :flop
   end
-  version :thumb_small do
-    process resize_to_fit: [100, 100]
+
+  def strip
+    manipulate! do |avatar|
+      avatar.strip
+      avatar = yield(avatar) if block_given?
+      avatar
+    end
+  end
+
+  def flop
+    manipulate!(&:flop)
   end
 
   # def default_url(*args)
@@ -43,7 +54,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_allowlist
-    %w(jpg jpeg gif png)
+    %w[jpg jpeg gif png]
   end
 
   # Override the filename of the uploaded files:
@@ -51,4 +62,5 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+  #
 end

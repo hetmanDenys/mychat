@@ -3,11 +3,11 @@ class UsersController < ApplicationController
 
   def show
     @users = User.all
-    @login_name = if current_user.user_name
-               current_user.user_name
-             else
-               current_user.email
-             end
+    @login_name =  if current_user.user_name != ''
+                     current_user.user_name
+                   else
+                     current_user.email
+                   end
   end
 
   def edit
@@ -15,9 +15,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    return redirect_to '/' if user.update! user_params
-
-    redirect_to '/sss'
+    user.update! user_params
+    redirect_to :edit_user
+  rescue ActiveRecord::RecordInvalid => e
+    flash[:messages] = e.message
+    redirect_to :edit_user
   end
 
   private
