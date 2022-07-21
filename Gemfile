@@ -1,3 +1,4 @@
+gem 'dotenv-rails', groups: %i[development test]
 source 'http://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -18,6 +19,9 @@ gem 'mini_magick'
 gem 'rack-cors'
 gem 'rubocop-rails', require: false
 gem 'sass-rails', '>= 6'
+gem 'obscenity'
+gem "aws-sdk-s3", require: false
+gem 'carrierwave', '~> 2.0'
 gem 'uglifier'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
@@ -30,11 +34,14 @@ gem 'bootstrap', '~> 5.0'
 gem 'bootstrap_form', '~> 5.1'
 gem 'devise_token_auth'
 gem 'handlebars_assets'
+gem "bootstrap", "~> 5.0"
+gem "bootstrap_form", "~> 5.1"
 gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'image_processing', '>= 1.2'
 gem 'turbo-rails', '~> 1.1.1'
+gem "image_processing", ">= 1.2"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

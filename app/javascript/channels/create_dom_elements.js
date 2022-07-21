@@ -9,8 +9,8 @@ export default function createDomElements(data) {
                     {
                       time: (data.created_at),
                       body: m.body,
-                      sender_id: m.sender_id,
                       file: m.file,
+                      sender_id: m.sender_id,
                       align: ( m.sender_id !== data.current_user_id) ? "your" : "my",
                     }
                 )),
@@ -23,8 +23,8 @@ export default function createDomElements(data) {
                 {{#each messages}}
                         <div class='{{this.align}}'>
                             {{#if this.file}}
-                                <div id="for_file_downloading" class="small">
-                                    <a href='/files/' + {{this.file}} class="link-info" download="message.file">{{this.file}}</a>
+                                <div id="for_file_downloading">
+                                    <a href="/files/{{this.file}}" class="link link-info" download="{{this.file}}">{{this.file}}</a>
                                 </div>
                             {{/if}}
                             <div class="message" >

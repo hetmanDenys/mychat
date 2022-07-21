@@ -83,7 +83,7 @@ body{
  .your{
    display: flex;
    justify-content: flex-start;
-   align-items: center;
+   align-items: flex-start;
    width: 100%;
    flex-direction: column-reverse;
    margin-top: 10px;
@@ -94,9 +94,7 @@ body{
   flex-direction: row;
   width: 100%;
   justify-content: flex-end;
-  align-items: center;
-   margin-top: 5px;
-   margin-bottom: 5px;
+  align-items: flex-end;
  }
 
 .message {
@@ -192,5 +190,5 @@ body{
   border-radius: 50%;
 }
 .small{
-  margin-right: 5px;
+
 }

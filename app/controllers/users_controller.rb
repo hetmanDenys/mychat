@@ -3,7 +3,11 @@ class UsersController < ApplicationController
 
   def show
     @users = User.all
-    @login_name = current_user.user_name || current_user.email
+    @login_name = if current_user.user_name
+               current_user.user_name
+             else
+               current_user.email
+             end
   end
 
   def edit

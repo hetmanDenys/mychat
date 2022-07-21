@@ -5,7 +5,7 @@ class UserChatController < ApplicationController
     @recipient = User.find params[:user_id]
     @old_time = l(Message.last.created_at, format: :short)
     ActionCable.server.broadcast('MyChannel',
-                                 { body: params[:body], current_user_id: current_user.id, created_at: @old_time, 
+                                 { body: params[:body], current_user_id: current_user.id, created_at: @old_time,
                                    file: params[:file] })
 
     head :ok
@@ -22,15 +22,10 @@ class UserChatController < ApplicationController
     end
   end
 
-  # def download
-  #   send_file '/home/user/RubymineProjects/demo/app/assets/images/download.png', type: 'image/png',
-  #                                                                                   disposition: 'attachment'
-  # end
-
   def message_sent
-    @message = current_user.sent.create(recipient: @recipient, body: params[:body], file: params[:file])
+    message = current_user.sent_messages.create(recipient: @recipient, body: params[:body], file: params[:file])
     pp params[:file].tempfile
-    @message.save
+    message.save
   end
 
   private

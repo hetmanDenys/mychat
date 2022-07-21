@@ -19,10 +19,6 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
-label {
-    display: block;
-}
-
 input, button, select, textarea {
     font-family: inherit;
     font-size: inherit;
@@ -205,8 +201,4 @@ header {
     height: 100%;
     text-align: center;
     width: 100%;
-}
-
-a:hover {
-    color: #004cff;
 }
