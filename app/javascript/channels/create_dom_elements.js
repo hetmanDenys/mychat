@@ -19,20 +19,22 @@ export default function createDomElements(data) {
             };
     const template = Handlebars.compile(
         ` 
-            <div class="our_messages" id="messages">
-                {{#each messages}}
-                        <div class='{{this.align}}'>
-                            {{#if this.file}}
-                                <div id="for_file_downloading">
-                                    <a href="/files/{{this.file}}" class="link link-info" download="{{this.file}}">{{this.file}}</a>
+            <div class="our_messages scroll_messages" id="messages">
+<!--                <div class="s">-->
+                    {{#each messages}}
+                            <div class='{{this.align}}'>
+                                {{#if this.file}}
+                                    <div id="for_file_downloading">
+                                        <a href="/files/{{this.file}}" class="link link-info" download="{{this.file}}">{{this.file}}</a>
+                                    </div>
+                                {{/if}}
+                                <div class="alert alert-primary message" >
+                                    <p class="text color time">{{this.time}} </p>
+                                    <p class="text content">{{this.body}}</p>
                                 </div>
-                            {{/if}}
-                            <div class="message" >
-                                <p class="text color time">{{this.time}} </p>
-                                <p class="text">{{this.body}}</p>
-                            </div>
-                        </div> 
-                {{/each}}
+                            </div> 
+                    {{/each}}
+<!--                </div>-->
             </div>
         `
         )

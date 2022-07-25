@@ -2,7 +2,7 @@
   <div class = "general">
     <div class="left">
       <div class = "hello">
-        <h3 class="user">Welcome, <%= @login_name %></h3>
+        <h3 class="user">Welcome, <%= @user_name %></h3>
       </div>
     </div>
     <div class="right">
@@ -22,8 +22,14 @@
   </div>
 </header>
 
-<%#= will_paginate %>
+<div class="chat-padding">
+  <%= render 'users', users: @users_show, user_id: @user_id %>
+</div>
 
-<%= render 'users', users: @users %>
-
-<%#= will_paginate %>
+<div class="chat-pagination">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <%= paginate @users_show %>
+    </ul>
+  </nav>
+</div>

@@ -7,9 +7,9 @@
               <%= link_to message.file, '/files/' + message.file, class: "link link-info", download: message.file %>
             </div>
           <% end %>
-          <div class="message">
+          <div class= "alert alert-primary message">
             <p class="text color time"><%= l(message.created_at, format: :short ) %> </p>
-            <p class="text"><%= Obscenity.replacement(:stars).sanitize(message.body) %></p>
+            <p class="text content"><%= Obscenity.replacement(:stars).sanitize(message.body) %></p>
           </div>
         </div>
       <% else %>
@@ -19,8 +19,8 @@
               <%= link_to message.file, '/files/' + message.file, class: "link link-info", download: message.file %>
             </div>
           <% end %>
-          <div class="message">
-            <p class="text"><%= Obscenity.replacement(:stars).sanitize(message.body) %></p>
+          <div class="alert alert-primary message">
+            <p class="text content"><%= Obscenity.replacement(:stars).sanitize(message.body) %></p>
             <p class="text color time"><%= l(message.created_at, format: :short ) %> </p>
           </div>
         </div>

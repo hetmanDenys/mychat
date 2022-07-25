@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
 
   def show
-    @users = User.all
-    @login_name =  current_user.user_name || current_user.email
+    @first_user = User.first
+    @user_count = User.count
+    @user_id = current_user.id
+    @users_show = User.order(:id).page params[:page]
   end
 
   def edit

@@ -14,6 +14,8 @@ module Api
         ActionCable.server.broadcast('MyChannel',
                                      { current_user_id: @current_user.id, created_at: old_time,
                                        messages: messages })
+
+        head :ok
       end
 
       def message_sent

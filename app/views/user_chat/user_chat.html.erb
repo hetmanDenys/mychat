@@ -2,7 +2,7 @@
   <div class = "general">
     <div class="left">
       <div class = "hello">
-        <h3 class="user"><%= current_user.user_name || current_user.email %></h3>
+        <h3 class="user"><%= @user_name %></h3>
       </div>
     </div>
     <div class="right">
@@ -25,10 +25,10 @@
   </div>
 </header>
 
-<div class="for_all">
-  <div class="output">
-    <div class="name" data-id="<%= current_user.id %>">
-      <h3><%= @user.email %></h3>
+<div class="for_all border border-primary border-3 rounded-6">
+  <div class="output rounded-4">
+    <div class="name d-block p-2 rounded-3" data-id="<%= current_user.id %>">
+      <h3 class="h3"><%= @user.email %></h3>
     </div>
     <div class="messages">
         <%= render 'message'  %>
@@ -44,7 +44,7 @@
         </p>
 
         <p>
-          <%= f.submit 'API', class: "btn btn-light btn-outline-primary", id: "button_send_message"%>
+          <%= f.submit 'API', class: "btn btn-info", id: "button_send_message"%>
         </p>
       <% end %>
     </div>
@@ -56,10 +56,9 @@
         </p>
 
         <p>
-          <%= f.submit 'Websocket', class: "btn btn-light btn-outline-primary", id: "button_for_websocket"%>
+          <%= f.submit 'Websocket', class: "btn btn-light btn-info", id: "button_for_websocket"%>
         </p>
       <% end %>
     </div>
   </div>
 </div>
-

@@ -5,8 +5,6 @@ let user_id = data_id.dataset.id;
 const current_data_id = document.querySelector(".name");
 let current_user_id = current_data_id.dataset.id;
 const url = '/message_create';
-// const image_upload = document.getElementById('pictures');
-// const results = document.getElementsByClassName('messages');
 
 let form = document.getElementById("message_form")
 form.addEventListener('submit', async evt => {
@@ -27,9 +25,9 @@ async function postData(url, formData){
         credentials: 'same-origin',
         cache: 'no-cache',
         headers: {
-            // 'Content-Type': 'multipart/form-data',
+            'Content-Type': 'multipart/form-data',
             'X-CSRF-TOKEN': csrf,
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3fQ.kPxvpXMFUMcI-LnBA9ngNl8mL00Sk4OPFn8lElNcXHM'
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2NX0.2H9luTzNN_RXEABPTXNiXkocovIq1SI31nxLocwnHbE'
         },
         body: formData
     });
