@@ -35,5 +35,3 @@ async function postData(url, formData){
     });
 }
 });
-
-        // JSON.stringify({body: data, user_id: user_id, current_user_id: current_user_id, file: formData})

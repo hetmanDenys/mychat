@@ -25,11 +25,14 @@
 <div class="for_user_page">
   <%= form_for @user, url: { action: :update }, method: :patch do |f| %>
     <div class="row">
+      <%= f.label :User_name %>
       <%= f.text_field :user_name, class: "text_field is-invalid", placeholder: current_user.user_name, type: "text", required: 'required' %>
       <% if flash[:messages] %>
         <h6 class="text-danger"><%= flash[:messages] %></h6>
       <% end %>
-      <%= f.text_field :age, class: "text_field", placeholder: "Age", type: "text", required: 'required' %>
+      <%= f.label :Age %>
+      <%= f.text_field :age, class: "text_field datepicker", type: "date", required: 'required', placeholder: 'Age' %>
+      <%= f.label :Country %>
       <%= f.text_field :country, class: "text_field", placeholder: "Country", type: "text", required: 'required' %>
       <%= f.file_field :avatar %>
       <%= f.submit 'Send', class: "btn btn-primary", id: "button_send_data" %>
