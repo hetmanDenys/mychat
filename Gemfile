@@ -22,6 +22,7 @@ gem 'rubocop-rails', require: false
 gem 'sass-rails', '>= 6'
 gem 'obscenity'
 gem "aws-sdk-s3", require: false
+gem 'bootstrap-datepicker-rails'
 gem 'carrierwave', '~> 2.0'
 gem 'exifr'
 gem 'uglifier'

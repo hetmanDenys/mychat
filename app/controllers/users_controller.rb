@@ -3,19 +3,24 @@ class UsersController < ApplicationController
 
   def show
     @users = User.all
-    @login_name =  if current_user.user_name != ''
-                     current_user.user_name
-                   else
-                     current_user.email
-                   end
+    @login_name =  current_user.user_name || current_user.email
   end
 
   def edit
     user
   end
 
+  def users_age
+    date_sent = Date.parse(user_params[:age])
+    date_now = Date.today
+    how_many_days_have_passed = (date_now - date_sent).to_i
+    ((how_many_days_have_passed / 365.24).to_i).to_s
+  end
+
   def update
-    user.update! user_params
+    params = user_params
+    params["age"] = users_age
+    user.update! params
     redirect_to :edit_user
   rescue ActiveRecord::RecordInvalid => e
     flash[:messages] = e.message
