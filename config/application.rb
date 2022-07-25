@@ -11,7 +11,13 @@ module Demo
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
+    I18n.available_locales = %i[en uk]
+    config.i18n.default_locale = :uk
+
     HOSTNAME = ENV['HOSTNAME']
+
+    I18n.available_locales = %i[en ua]
+    config.i18n.default_locale = :ua
 
     # Configuration for the application, engines, and railties goes here.
     #

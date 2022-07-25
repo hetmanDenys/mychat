@@ -7,10 +7,10 @@
     </div>
     <div class="right">
       <div class="margin">
-        <%= link_to 'Go back', root_path, class: "btn btn-light btn-outline-warning"%>
-      </div>
+      <%= link_to t(:go_back), root_path, class: "btn btn-light btn-outline-warning"%>
+    </div>
       <div class="margin">
-        <%= link_to 'Exit', destroy_user_session_path, data: {confirm: "Are you sure?"}, :method => :delete, class: "btn btn-light btn-outline-danger" %>
+        <%= link_to t(:exit), destroy_user_session_path, data: {confirm: "Are you sure?"}, :method => :delete, class: "btn btn-light btn-outline-danger" %>
       </div>
     </div>
   </div>
@@ -31,7 +31,7 @@
         <p>
           <br>
           <%= text_field_tag :input_message, class: "text_field", placeholder: "Write something...", type: "text", required: 'required' %>
-          <%= hidden_field_tag :user_id,  @user.id %>
+          <%= hidden_field_tag :user_id, @user.id %>
         </p>
 
         <p>
