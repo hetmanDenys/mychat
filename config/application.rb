@@ -6,13 +6,12 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Demo
+module Mychat
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
-    I18n.available_locales = %i[en uk]
-    config.i18n.default_locale = :uk
+    config.secret_key_base = ENV['SECRET_KEY_BASE']
 
     HOSTNAME = ENV['HOSTNAME']
 
