@@ -18,7 +18,11 @@
         <tr class="<%= cycle('white', 'blue', 'dark-blue') -%>">
           <th scope="row"><%= counter %></th>
           <% counter += 1 %>
-          <td><%= user.email %></td>
+          <td><% if user.user_name != '' %>
+                <%= user.user_name %>
+              <% else %>
+                <%= user.email %>
+              <% end %></td>
           <td><%= link_to user_chat_path(user_id: user.id),class: "btn btn-outline-secondary btn-sm", :method => :get do %>
               <%= t(:messages) %>
             <% end %></td>

@@ -1,10 +1,11 @@
 class User < ApplicationRecord
   has_many :sent_messages, class_name: 'Message', foreign_key: :sender_id
   has_many :received, class_name: 'Message', foreign_key: :recipient_id
+  mount_uploader :avatar, AvatarUploader
 
   devise :database_authenticatable, :registerable
 
-  self.skip_session_storage = %i[http_auth params_auth]
-  validates :email, presence: true, length: { minimum: 5 }
+  validates_presence_of     :email
+  validates_uniqueness_of   :email
   paginates_per 5
 end
