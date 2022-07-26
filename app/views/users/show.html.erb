@@ -1,0 +1,41 @@
+<header>
+  <div class = "general">
+    <div class="left">
+      <div class = "hello">
+        <h3 class="user"><%= t(:welcome) %>, <%= @user_name %></h3>
+      </div>
+    </div>
+    <div class="right">
+      <div class="margin">
+        <%= link_to 'En', root_url(locale: :en), :method => :post, class: "btn btn-light btn-outline-info" %>
+      </div>
+      <div class="margin">
+        <%= link_to 'Ua', root_url(locale: :ua), :method => :post, class: "btn btn-light btn-outline-info" %>
+      </div>
+      <% if current_user.avatar.file %>
+        <div class="margin">
+          <%= link_to image_tag(current_user.avatar.url(:thumb), class: "avatar"), { action: "edit", controller: "users", id: current_user.id } %>
+        </div>
+      <% else %>
+        <div class="margin">
+          <%= link_to t(:profile), action: "edit", controller: "users", id: current_user.id %>
+        </div>
+      <% end %>
+      <div class="margin">
+        <%= link_to t(:exit), destroy_user_session_path, data: {confirm: t(:sure)}, :method => :delete, class: "btn btn-light btn-outline-danger" %>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="chat-padding">
+  <%= render 'users', users: @users_show, user_id: @user_id %>
+</div>
+
+<div class="chat-pagination">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <%= paginate @users_show %>
+    </ul>
+  </nav>
+</div>

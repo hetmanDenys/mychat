@@ -1,7 +1,13 @@
 
 en:
     welcome: "Welcome"
+    profile: "Profile"
+    user_name: "User name"
+    age: "Age"
+    country: "Country"
+    sure: "Are u sure?"
     exit: "Exit"
+    send: "Send"
     go_back: "Go back"
     messages: "Messages"
     email: "Email"
