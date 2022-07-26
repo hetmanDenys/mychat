@@ -1,10 +1,10 @@
 
 document.addEventListener("DOMContentLoaded", function(event) {
-const data_id = document.querySelector(".for_post");
-let user_id = data_id.dataset.id;
-const current_data_id = document.querySelector(".name");
-let current_user_id = current_data_id.dataset.id;
-const url = '/message_create';
+const current_data_id = document.querySelector(".name")
+let current_user_id = current_data_id.dataset.id
+const for_post = document.querySelector(".for_post")
+let user_id = for_post.dataset.id
+const url = '/message_create'
 
 let form = document.getElementById("message_form")
 form.addEventListener('submit', async evt => {
@@ -12,10 +12,10 @@ form.addEventListener('submit', async evt => {
     let formData = new FormData(form)
     let data_for_post = document.getElementById('input_message').value
     formData.append('body', data_for_post)
+    formData.append('user_id', user_id)
     formData.append('current_user_id', current_user_id)
     await postData(url, formData)
 } );
-
 
 async function postData(url, formData){
     const csrf = document.querySelector('meta[name="csrf-token"]').content;
@@ -25,9 +25,8 @@ async function postData(url, formData){
         credentials: 'same-origin',
         cache: 'no-cache',
         headers: {
-            'Content-Type': 'multipart/form-data',
             'X-CSRF-TOKEN': csrf,
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2Nn0.mjtSSFqKOvAY8Eum-MXbsKEiG3M02LpyftU6wpBf-Sg'
+            'Authorization': `Bearer ${gon.token}`
         },
         body: formData
     });

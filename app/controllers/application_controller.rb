@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :user_name
+  before_action :jwt_token
   before_action :authenticate_user!
   around_action :switch_locale
 
@@ -11,6 +12,10 @@ class ApplicationController < ActionController::Base
                      current_user.user_name
                    end
     end
+  end
+
+  def jwt_token
+    gon.token = JWT.encode({ user_id: current_user.id }, 's3cr3t')
   end
 
   def switch_locale(&action)

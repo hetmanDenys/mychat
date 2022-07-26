@@ -1,2 +1,2 @@
-//= link_tree ../images
+//= link_tree ../../../public/images
 //= link_directory ../stylesheets .css
