@@ -8,10 +8,10 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import * as mdb from 'mdb-ui-kit'
-import './websocket'
+import '../js/websocket'
 import '../channels/consumer'
 import '../channels/my_channel'
-import './datepicker'
+import '../js/validate_for_age'
 import '../channels/create_dom_elements'
 
 Rails.start()

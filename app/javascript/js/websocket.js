@@ -27,7 +27,7 @@ async function postData(url, formData){
         headers: {
             'Content-Type': 'multipart/form-data',
             'X-CSRF-TOKEN': csrf,
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2NX0.2H9luTzNN_RXEABPTXNiXkocovIq1SI31nxLocwnHbE'
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2Nn0.mjtSSFqKOvAY8Eum-MXbsKEiG3M02LpyftU6wpBf-Sg'
         },
         body: formData
     });
