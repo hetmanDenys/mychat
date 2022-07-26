@@ -10,7 +10,7 @@ module Api
         messages.each do |m|
           m.body = Obscenity.replacement(:stars).sanitize(m.body) if Obscenity.profane?(m.body)
         end
-        old_time = I18n.l(Message.last.created_at, format: :short)
+        old_time = I18n.l(Message.last.created_at, format: :message_time)
         ActionCable.server.broadcast('MyChannel',
                                      { current_user_id: @current_user.id, created_at: old_time,
                                        messages: messages })
