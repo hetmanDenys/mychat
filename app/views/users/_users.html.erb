@@ -3,7 +3,7 @@
     <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Email</th>
+      <th scope="col"><%= t(:email) %></th>
       <th colspan="1"></th>
     </tr>
     </thead>
@@ -24,8 +24,8 @@
                 <%= user.email %>
               <% end %></td>
           <td><%= link_to user_chat_path(user_id: user.id),class: "btn btn-outline-secondary btn-sm", :method => :get do %>
-              Messages
-          <% end %></td>
+              <%= t(:messages) %>
+            <% end %></td>
         </tr>
       <% end %>
     <% end %>

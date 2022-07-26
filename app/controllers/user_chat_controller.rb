@@ -3,7 +3,7 @@ class UserChatController < ApplicationController
 
   def create
     @recipient = User.find params[:user_id]
-    @old_time = l(Message.last.created_at, format: :short)
+    @old_time = l(Message.last.created_at, format: :message_time)
     ActionCable.server.broadcast('MyChannel',
                                  { body: params[:body], current_user_id: current_user.id, created_at: @old_time,
                                    file: params[:file] })

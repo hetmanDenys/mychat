@@ -8,7 +8,7 @@
             </div>
           <% end %>
           <div class= "alert alert-primary message">
-            <p class="text color time"><%= l(message.created_at, format: :short ) %> </p>
+            <p class="text color time"><%= l(message.created_at, format: :message_time ) %> </p>
             <p class="text content"><%= Obscenity.replacement(:stars).sanitize(message.body) %></p>
           </div>
         </div>
@@ -21,7 +21,7 @@
           <% end %>
           <div class="alert alert-primary message">
             <p class="text content"><%= Obscenity.replacement(:stars).sanitize(message.body) %></p>
-            <p class="text color time"><%= l(message.created_at, format: :short ) %> </p>
+            <p class="text color time"><%= l(message.created_at, format: :message_time ) %> </p>
           </div>
         </div>
       <% end %>

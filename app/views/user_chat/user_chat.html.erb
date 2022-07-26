@@ -12,14 +12,14 @@
         </div>
       <% else %>
         <div class="margin">
-          <%= link_to 'Profile', action: "edit", controller: "users", id: current_user.id %>
+          <%= link_to t(:profile), action: "edit", controller: "users", id: current_user.id %>
         </div>
       <% end %>
       <div class="margin">
-        <%= link_to 'Go back', root_path, class: "btn btn-light btn-outline-warning"%>
+        <%= link_to t(:go_back), root_path, class: "btn btn-light btn-outline-warning"%>
       </div>
       <div class="margin">
-        <%= link_to 'Exit', destroy_user_session_path, data: {confirm: "Are you sure?"}, :method => :delete, class: "btn btn-light btn-outline-danger" %>
+        <%= link_to t(:exit), destroy_user_session_path, data: {confirm: "Are you sure?"}, :method => :delete, class: "btn btn-light btn-outline-danger" %>
       </div>
     </div>
   </div>
@@ -44,7 +44,7 @@
         </p>
 
         <p>
-          <%= f.submit 'API', class: "btn btn-info", id: "button_send_message"%>
+          <%= f.submit t(:send), class: "btn btn-info", id: "button_send_message"%>
         </p>
       <% end %>
     </div>
@@ -56,7 +56,7 @@
         </p>
 
         <p>
-          <%= f.submit 'Websocket', class: "btn btn-light btn-info", id: "button_for_websocket"%>
+          <%= f.submit t(:send), class: "btn btn-light btn-info", id: "button_for_websocket"%>
         </p>
       <% end %>
     </div>
