@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_many :sent_messages, class_name: 'Message', foreign_key: :sender_id
   has_many :received, class_name: 'Message', foreign_key: :recipient_id
+  has_many :messages
+  has_many :room, class_name: 'Room', through: :messages
   mount_uploader :avatar, AvatarUploader
 
   devise :database_authenticatable, :registerable

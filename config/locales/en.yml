@@ -10,6 +10,8 @@ en:
     exit: "Exit"
     send: "Send"
     go_back: "Go back"
+    room_name: "Room name"
+    create: "Create"
     messages: "Messages"
     email: "Email"
     time:

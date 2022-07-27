@@ -1,5 +1,6 @@
 class UserChatController < ApplicationController
   before_action :message_sent, only: [:create]
+  before_action :user_and_room, only: [:user_chat]
 
   def create
     @recipient = User.find params[:user_id]
@@ -11,10 +12,30 @@ class UserChatController < ApplicationController
     head :ok
   end
 
+  def recipient_user_name
+    @recipient_user_name = if @user.user_name == ''
+                             @user.email
+                           else
+                             @user.user_name
+                           end
+  end
+
+  def user_and_room
+    @room = Room.find params[:room_id]
+    @user = User.find params[:id]
+
+  end
+
   def user_chat
-    @user = User.find params[:user_id]
     @messages = Message.where(recipient_id: @user.id, sender_id: current_user.id)
                        .or(Message.where(sender_id: @user.id, recipient_id: current_user.id))
+    if [] === Message.where(sender_id: current_user.id, room_id: params[:room_id])
+                     .or(Message.where(sender_id: @user.id, room_id: params[:room_id]))
+      Message.create(recipient_id: @user.id, sender_id: current_user.id,
+                     body: "#{@user_name} joined to room", room_id: params[:room_id])
+      Message.create(recipient_id: current_user.id, sender_id: @user.id,
+                     body: "#{@recipient_user_name} joined to room", room_id: params[:room_id])
+    end
     @old_time = begin
       Message.last.created_at
     rescue StandardError
