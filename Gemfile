@@ -19,6 +19,7 @@ gem 'jwt'
 gem 'mini_magick'
 gem 'rack-cors'
 gem 'rename'
+gem 'gon'
 gem 'kaminari'
 gem 'rubocop-rails', require: false
 gem 'sass-rails', '>= 6'
