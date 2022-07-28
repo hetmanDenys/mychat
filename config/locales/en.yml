@@ -12,6 +12,7 @@ en:
     go_back: "Go back"
     room_name: "Room name"
     create: "Create"
+    rooms: "Rooms"
     messages: "Messages"
     email: "Email"
     time:

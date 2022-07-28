@@ -15,6 +15,7 @@ table{
   display: flex;
   justify-content: center;
   align-items: center;
+  width: auto;
 }
 th{
   padding-right: 50px;
@@ -116,4 +117,10 @@ th{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 }

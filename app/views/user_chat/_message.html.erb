@@ -1,6 +1,6 @@
   <div class="our_messages" id="messages">
     <% @messages.each do |message| %>
-      <% if message.sender_id == @user.id %>
+      <% if message.user_id == @user.id %>
         <div class="your" data-user_id=<% @user.id %>>
           <% if message.file %>
             <div id="for_file_downloading">

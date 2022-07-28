@@ -28,8 +28,13 @@
   </div>
 </header>
 
-<div class="chat-padding">
-  <%= render 'users', users: @users_show, user_id: @user_id %>
+<div class="row">
+  <div class="chat-padding">
+    <%= render 'users', users: @users_show, user_id: @user_id %>
+  </div>
+  <div>
+    <%= render 'rooms' %>
+  </div>
 </div>
 
 <div class="chat-pagination">

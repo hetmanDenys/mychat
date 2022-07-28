@@ -2,7 +2,11 @@ class RoomsController < ApplicationController
   def show; end
 
   def create
-    room = Room.create(title: params[:title], user_id: current_user.id)
-    redirect_to user_chat_path(id: params[:id], room_id: params[:room_id]) if room.save
+    room = current_user.rooms.new(title: params[:title])
+    if room.save
+      redirect_to user_chat_path(id: current_user, room_id: room)
+    else
+      pp 11111
+    end
   end
 end

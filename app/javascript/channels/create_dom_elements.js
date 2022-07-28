@@ -10,8 +10,8 @@ export default function createDomElements(data) {
                       time: (data.created_at),
                       body: m.body,
                       file: m.file,
-                      sender_id: m.sender_id,
-                      align: ( m.sender_id !== data.current_user_id) ? "your" : "my",
+                      user_id: m.user_id,
+                      align: ( m.user_id !== data.current_user_id) ? "your" : "my",
                     }
                 )),
                     recipient_id: recipient_id,

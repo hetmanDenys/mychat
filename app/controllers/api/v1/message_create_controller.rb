@@ -5,8 +5,8 @@ module Api
       before_action :message_sent, only: [:create]
 
       def create
-        messages = Message.where(recipient_id: @recipient.id, sender_id: @current_user.id)
-                          .or(Message.where(sender_id: @recipient.id, recipient_id: @current_user.id))
+        messages = Message.where(recipient_id: @recipient.id, user_id: @current_user.id, room_id: params[:room_id])
+                          .or(Message.where(user_id: @recipient.id, recipient_id: @current_user.id, room_id: params[:room_id]))
         messages.each do |m|
           m.body = Obscenity.replacement(:stars).sanitize(m.body) if Obscenity.profane?(m.body)
         end
@@ -21,9 +21,9 @@ module Api
       def message_sent
         message = if params[:file]
                     @current_user.sent_messages.create(recipient: @recipient, body: params[:body],
-                                                       file: params[:file].original_filename)
+                                                       file: params[:file].original_filename, room_id: params[:room_id])
                   else
-                    @current_user.sent_messages.create(recipient: @recipient, body: params[:body])
+                    @current_user.sent_messages.create(recipient: @recipient, body: params[:body], room_id: params[:room_id])
                   end
 
         message.save
