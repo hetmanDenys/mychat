@@ -12,18 +12,14 @@ class UserChatController < ApplicationController
     head :ok
   end
 
-  def recipient_user_name
+  def user_and_room
+    @room = Room.find params[:room_id]
+    @user = User.find params[:id]
     @recipient_user_name = if @user.user_name == ''
                              @user.email
                            else
                              @user.user_name
                            end
-  end
-
-  def user_and_room
-    @room = Room.find params[:room_id]
-    @user = User.find params[:id]
-
   end
 
   def user_chat

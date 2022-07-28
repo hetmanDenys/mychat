@@ -21,6 +21,7 @@ gem 'rack-cors'
 gem 'rename'
 gem 'gon'
 gem 'kaminari'
+gem 'gon'
 gem 'rubocop-rails', require: false
 gem 'sass-rails', '>= 6'
 gem 'obscenity'
