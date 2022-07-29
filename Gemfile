@@ -5,7 +5,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
+<<<<<<< HEAD
+gem "rails", "~> 7.0.0"
+=======
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
+>>>>>>> parent of cc4ec55... updated rails to version 7
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
@@ -16,6 +20,7 @@ gem 'bcrypt'
 gem 'carrierwave', '~> 2.0'
 gem 'carrierwave-imageoptimizer'
 gem 'jwt'
+gem "sprockets-rails"
 gem 'mini_magick'
 gem 'rack-cors'
 gem 'rename'
