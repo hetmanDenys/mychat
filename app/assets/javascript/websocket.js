@@ -1,5 +1,3 @@
-
-document.addEventListener("DOMContentLoaded", function(event) {
 const data_id = document.querySelector(".for_post");
 let user_id = data_id.dataset.id;
 const data_id_for_room = document.querySelector(".messages");
@@ -34,4 +32,3 @@ async function postData(url, formData){
         body: formData
     });
 }
-});

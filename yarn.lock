@@ -3370,6 +3370,11 @@ import-local@^2.0.0:
     pkg-dir "^3.0.0"
     resolve-cwd "^2.0.0"
 
+import-maps@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/import-maps/-/import-maps-0.2.4.tgz#7404dc331acb13bbf98151d742a5ce238e8b6d41"
+  integrity sha512-31ZDO53RS3HcZUDIj8OMNuFr6gXkc6wsK+lTZosZuT8CDF/Y1Hk2gAJ6X+bdiEZoj8GkRN+nS5hFZQuOl0f29g==
+
 imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/imurmurhash/-/imurmurhash-0.1.4.tgz"

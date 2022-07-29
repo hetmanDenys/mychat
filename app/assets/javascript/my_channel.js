@@ -1,8 +1,5 @@
-import consumer from "./consumer"
-import createDomElements from "./create_dom_elements";
-
-document.addEventListener("DOMContentLoaded", function(event) {
-
+import consumer from "consumer"
+import createDomElements from "create_dom_elements";
 
 const myChannel = consumer.subscriptions.create({ channel: "MyChannel" }, {
     received(data) {
@@ -21,4 +18,3 @@ const myChannel = consumer.subscriptions.create({ channel: "MyChannel" }, {
         myChannel.send({ body: data_for_websocket, recipient_id: recipient_id, current_user_id: current_user_id})
     } );
 
-});
