@@ -1,10 +1,12 @@
 
 document.addEventListener("DOMContentLoaded", function(event) {
-const current_data_id = document.querySelector(".name")
-let current_user_id = current_data_id.dataset.id
-const for_post = document.querySelector(".for_post")
-let user_id = for_post.dataset.id
-const url = '/message_create'
+const data_id = document.querySelector(".for_post");
+let user_id = data_id.dataset.id;
+const data_id_for_room = document.querySelector(".messages");
+let room_id = data_id_for_room.dataset.id;
+const current_data_id = document.querySelector(".name");
+let current_user_id = current_data_id.dataset.id;
+const url = '/message_create';
 
 let form = document.getElementById("message_form")
 form.addEventListener('submit', async evt => {
@@ -14,6 +16,7 @@ form.addEventListener('submit', async evt => {
     formData.append('body', data_for_post)
     formData.append('user_id', user_id)
     formData.append('current_user_id', current_user_id)
+    formData.append('room_id', room_id)
     await postData(url, formData)
 } );
 

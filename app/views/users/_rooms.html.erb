@@ -3,7 +3,7 @@
     <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
-      <th scope="col"><%= t(:email) %></th>
+      <th scope="col"><%= t(:rooms) %></th>
       <th colspan="1"></th>
     </tr>
     </thead>
@@ -13,22 +13,16 @@
     <% else %>
       <% counter = 1 + (5 * (params[:page].to_i - 1)) %>
     <% end %>
-    <% users.each do |user|%>
-      <% if user != current_user %>
+    <% @rooms.each do |room|%>
         <tr class="<%= cycle('white', 'blue', 'dark-blue') -%>">
           <th scope="row"><%= counter %></th>
           <% counter += 1 %>
-          <td><% if user.user_name != '' %>
-                <%= user.user_name %>
-              <% else %>
-                <%= user.email %>
-              <% end %></td>
-          <td><%= link_to room_path(id: user.id),class: "btn btn-outline-secondary btn-sm" do %>
+          <td><%= room.title %></td>
+          <td><%= link_to user_room_path(id: current_user.id, room_id: room.id, recipient_id: params[:id]),class: "btn btn-outline-secondary btn-sm" do %>
               <%= t(:messages) %>
             <% end %></td>
         </tr>
       <% end %>
-    <% end %>
     </tbody>
   </table>
 </div>

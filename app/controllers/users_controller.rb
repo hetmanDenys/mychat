@@ -5,6 +5,9 @@ class UsersController < ApplicationController
     @user_count = User.count
     @user_id = current_user.id
     @users_show = User.order(:id).page params[:page]
+    @rooms = current_user.rooms.all
+    pp params
+    pp 1111111111111
   end
 
   def edit
@@ -29,10 +32,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def user
-    @user ||= User.find params[:id]
-  end
 
   def user_params
     params.require(:user).permit(:user_name, :birthday, :country, :avatar)
