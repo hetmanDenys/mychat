@@ -35,8 +35,8 @@
     </div>
   </div>
   <div class="two_forms">
-    <div class="for_post" data-id="<%= @user.id %>">
-      <%= bootstrap_form_with model: @model_name, url: user_create_path, method: :post, id: "message_form" do |f| %>
+    <div class="for_post" data-id="<%= @recipient.id %>">
+      <%= bootstrap_form_with model: @model_name, url: room_create_message_path, method: :post, id: "message_form" do |f| %>
         <p>
           <br>
           <%= f.text_field :input_message, class: "text_field", placeholder: "Write something...", type: "text", required: 'required'%>
@@ -48,7 +48,7 @@
         </p>
       <% end %>
     </div>
-    <div class="for_websocket" data-id="<%= @user.id %>" >
+    <div class="for_websocket" data-id="<%= @recipient.id %>" >
       <%= bootstrap_form_with model: @model_name, url: message_create_path, method: :patch, id: "websocket_form" do |f| %>
         <p>
           <br>

@@ -7,9 +7,9 @@ Rails.application.routes.draw do
     post '/login', to: 'api/v1/application#login'
     post :message_create, to: 'api/v1/message_create#create'
     post 'auth_user' => 'authentication#authenticate_user'
-    get :user_chat, to: 'user_chat#user_chat'
-    get :download_file, to: 'user_chat#download'
-    post :user_create, to: 'user_chat#create'
+    get :user_room, to: 'rooms#room'
+    # get :download_file, to: 'rooms#download'
+    post :room_create_message, to: 'rooms#create_message'
     get :user, to: 'users#show'
     root to: 'users#show'
   end

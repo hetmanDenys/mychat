@@ -1,157 +1,157 @@
-
-.for_all {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
-  background: #e7f2f8;
-  height: 90%;
-  min-height: 90%;
-  min-width: 40%;
-  width: 40%;
-  margin-left: 30%;
-  margin-top: 20px;
-}
-
-.output {
-  max-height: 70%;
-  max-width: 80%;
-  min-width: 80%;
-  min-height: 70%;
-  background: #daedf9;
-  margin-top: 20px;
-  border: solid #1d90ee;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: column;
-}
-
-.input {
-  margin-right: 650px;
-  margin-top: 20px;
-  height: 17%;
-  width: 30%;
-}
-
-body {
-  background: #f4f4f4;
-}
-
-.name {
-  border-bottom: solid;
-  display: flex;
-  color: #1d90ee;
-  align-items: center;
-  justify-content: center;
-  height: 7%;
-  width: 100%;
-  background: #c4dff3;
-}
-
-.our_messages {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-}
-
-.messages {
-  display: block;
-  width: 100%;
-  height: 100%;
-  overflow: scroll;
-}
-
-.dialog {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-}
-
-.your {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 100%;
-  flex-direction: column-reverse;
-  margin-top: 10px;
-}
-
-.my {
-  display: flex;
-  flex-direction: column-reverse;
-  width: 100%;
-  justify-content: flex-end;
-  align-items: flex-end;
-}
-
-.message {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 10px;
-  max-width: 300px;
-  min-height: 10px;
-  max-height: 10px;
-  text-decoration: none;
-  position: relative;
-  color: #766AD0;
-  font-size: 14px;
-  font-weight: 700;
-  white-space: nowrap;
-  transition: .3s linear;
-  margin: 0 6px;
-}
-.text {
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-bottom: 0;
-}
-
-.content{
-  font-family: 'Capture', serif;
-}
-
-.text_field {
-  width: 100%;
-  height: 100%;
-  max-lines: 2;
-}
-
-
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.color {
-  color: #373642;
-}
-
-.time {
-  font-size: x-small;
-}
-
-.two_forms {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-}
-
-.for_websocket {
-  margin-left: 50px;
-}
-
-.for_fetch {
-  margin-left: 50px;
-}
-
-.scroll_messages{
-  overflow: scroll;
-}
+//
+//.for_all {
+//  display: flex;
+//  justify-content: flex-start;
+//  align-items: center;
+//  flex-direction: column;
+//  background: #e7f2f8;
+//  height: 90%;
+//  min-height: 90%;
+//  min-width: 40%;
+//  width: 40%;
+//  margin-left: 30%;
+//  margin-top: 20px;
+//}
+//
+//.output {
+//  max-height: 70%;
+//  max-width: 80%;
+//  min-width: 80%;
+//  min-height: 70%;
+//  background: #daedf9;
+//  margin-top: 20px;
+//  border: solid #1d90ee;
+//  display: flex;
+//  justify-content: flex-start;
+//  align-items: flex-start;
+//  flex-direction: column;
+//}
+//
+//.input {
+//  margin-right: 650px;
+//  margin-top: 20px;
+//  height: 17%;
+//  width: 30%;
+//}
+//
+//body {
+//  background: #f4f4f4;
+//}
+//
+//.name {
+//  border-bottom: solid;
+//  display: flex;
+//  color: #1d90ee;
+//  align-items: center;
+//  justify-content: center;
+//  height: 7%;
+//  width: 100%;
+//  background: #c4dff3;
+//}
+//
+//.our_messages {
+//  display: flex;
+//  align-items: flex-end;
+//  justify-content: flex-end;
+//  flex-direction: column;
+//  width: 100%;
+//  height: 100%;
+//}
+//
+//.messages {
+//  display: block;
+//  width: 100%;
+//  height: 100%;
+//  overflow: scroll;
+//}
+//
+//.dialog {
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//  height: 100%;
+//  width: 100%;
+//}
+//
+//.your {
+//  display: flex;
+//  justify-content: flex-start;
+//  align-items: flex-start;
+//  width: 100%;
+//  flex-direction: column-reverse;
+//  margin-top: 10px;
+//}
+//
+//.my {
+//  display: flex;
+//  flex-direction: column-reverse;
+//  width: 100%;
+//  justify-content: flex-end;
+//  align-items: flex-end;
+//}
+//
+//.message {
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//  min-width: 10px;
+//  max-width: 300px;
+//  min-height: 10px;
+//  max-height: 10px;
+//  text-decoration: none;
+//  position: relative;
+//  color: #766AD0;
+//  font-size: 14px;
+//  font-weight: 700;
+//  white-space: nowrap;
+//  transition: .3s linear;
+//  margin: 0 6px;
+//}
+//.text {
+//  margin-left: 5px;
+//  margin-right: 5px;
+//  margin-bottom: 0;
+//}
+//
+//.content{
+//  font-family: 'Capture', serif;
+//}
+//
+//.text_field {
+//  width: 100%;
+//  height: 100%;
+//  max-lines: 2;
+//}
+//
+//
+//.center {
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//}
+//
+//.color {
+//  color: #373642;
+//}
+//
+//.time {
+//  font-size: x-small;
+//}
+//
+//.two_forms {
+//  display: flex;
+//  justify-content: center;
+//  align-content: center;
+//}
+//
+//.for_websocket {
+//  margin-left: 50px;
+//}
+//
+//.for_fetch {
+//  margin-left: 50px;
+//}
+//
+//.scroll_messages{
+//  overflow: scroll;
+//}

@@ -22,7 +22,7 @@
         <%= f.text_field :title, class: "text_field is-invalid", placeholder: 'room name', type: "text", required: 'required' %>
         <%= f.hidden_field :id, value: params[:id] %>
         <% if Room.count == 0 %>
-          <%= f.hidden_field :room_id, value: Room.first.id %>
+          <%= f.hidden_field :room_id, value: 1 %>
         <% else %>
           <%= f.hidden_field :room_id, value: Room.last.id + 1 %>
         <% end %>
