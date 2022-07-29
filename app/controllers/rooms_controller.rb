@@ -1,5 +1,4 @@
 class RoomsController < ApplicationController
-  before_action :message_sent, only: [:create_message]
   before_action :user_and_room, only: [:room]
 
   def show; end
@@ -31,20 +30,6 @@ class RoomsController < ApplicationController
                            end
   end
 
-  def message_sent
-    message = current_user.sent_messages.create(recipient: @recipient, body: params[:body], file: params[:file])
-    message.save
-  end
-
-  def create_message
-    @old_time = l(Message.last.created_at, format: :message_time)
-    ActionCable.server.broadcast('MyChannel',
-                                 { body: params[:body], current_user_id: current_user.id, created_at: @old_time,
-                                   file: params[:file] })
-
-    head :ok
-  end
-
   def create
     pp params
     room = current_user.rooms.create(user_id: current_user.id, title: params[:title])
@@ -53,11 +38,5 @@ class RoomsController < ApplicationController
     else
       pp 11111
     end
-  end
-
-  private
-
-  def message_params
-    params.require(:message).permit(:body, :file)
   end
 end

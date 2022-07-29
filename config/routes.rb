@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     post 'auth_user' => 'authentication#authenticate_user'
     get :user_room, to: 'rooms#room'
     # get :download_file, to: 'rooms#download'
-    post :room_create_message, to: 'rooms#create_message'
+    post :create_message, to: 'messages#create_message'
     get :user, to: 'users#show'
     root to: 'users#show'
   end

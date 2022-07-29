@@ -6,6 +6,8 @@ class UsersController < ApplicationController
     @user_id = current_user.id
     @users_show = User.order(:id).page params[:page]
     @rooms = current_user.rooms.all
+    pp params
+    pp 1111111111111
   end
 
   def edit
