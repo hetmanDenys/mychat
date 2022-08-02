@@ -1,9 +1,7 @@
 import consumer from "consumer"
-import createDomElements from "create_dom_elements";
 
 const myChannel = consumer.subscriptions.create({ channel: "MyChannel" }, {
     received(data) {
-        createDomElements(data);
     }
 })
 

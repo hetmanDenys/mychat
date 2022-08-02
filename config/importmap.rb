@@ -13,6 +13,4 @@ pin 'turbolinks', preload: true
 pin '@rails/activestorage', to: '@rails--activestorage.js', preload: true
 pin '@rails/ujs', to: '@rails--ujs.js', preload: true
 pin '@rails/actioncable', to: '@rails--actioncable.js', preload: true
-pin 'handlebars', to: 'handlebars.js', preload: true
-pin 'fs', preload: true
-pin 'source-map', preload: true
+pin_all_from "app/assets/javascript/controllers", under: "controllers"

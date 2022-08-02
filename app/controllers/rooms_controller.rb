@@ -22,7 +22,7 @@ class RoomsController < ApplicationController
 
   def user_and_room
     @recipient = User.find params[:recipient_id]
-    @room = current_user.rooms.find(params[:room_id])
+    @room = current_user.rooms.find(params[:room_id]) if current_user.rooms
     @recipient_user_name = if @recipient.user_name == ''
                              @recipient.email
                            else

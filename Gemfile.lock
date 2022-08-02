@@ -155,6 +155,10 @@ GEM
       execjs (~> 2.0)
       sprockets (>= 2.0.0)
       tilt (>= 1.2)
+    hotwire-rails (0.1.3)
+      rails (>= 6.0.0)
+      stimulus-rails
+      turbo-rails
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     image_optimizer (1.9.0)
@@ -324,6 +328,8 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     ssrf_filter (1.0.7)
+    stimulus-rails (1.1.0)
+      railties (>= 6.0.0)
     strscan (3.0.4)
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
@@ -379,6 +385,7 @@ DEPENDENCIES
   gon
   handlebars
   handlebars_assets
+  hotwire-rails
   image_processing (>= 1.2)
   importmap-rails (~> 1.1)
   jbuilder (~> 2.7)
@@ -398,7 +405,6 @@ DEPENDENCIES
   sass-rails (>= 6)
   selenium-webdriver
   spring
-  sprockets-rails
   turbo-rails (~> 1.1.1)
   tzinfo-data
   uglifier

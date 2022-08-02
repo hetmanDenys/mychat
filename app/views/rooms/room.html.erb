@@ -36,16 +36,18 @@
   </div>
   <div class="two_forms">
     <div class="for_post" data-id="<%= @recipient.id %>">
-      <%= bootstrap_form_with model: @model_name, url: create_message_path, method: :post, id: "message_form" do |f| %>
-        <p>
-          <br>
-          <%= f.text_field :input_message, class: "text_field", placeholder: "Write something...", type: "text", required: 'required'%>
-          <%= f.file_field :file, name: "file", accept: "/home/user/RubymineProjects/demo/app/assets/images/*", type: 'file' %>
-        </p>
+      <%= turbo_frame_tag 'new_message' do %>
+        <%= bootstrap_form_with model: @model_name, url: message_create_path, id: "message_form" do |f| %>
+          <p>
+            <br>
+            <%= f.text_field :input_message, class: "text_field", placeholder: "Write something...", type: "text", required: 'required'%>
+            <%= f.file_field :file, name: "file", accept: "/home/user/RubymineProjects/demo/app/assets/images/*", type: 'file' %>
+          </p>
 
-        <p>
-          <%= f.submit t(:send), class: "btn btn-info", id: "button_send_message"%>
-        </p>
+          <p>
+            <%= f.submit t(:send), class: "btn btn-info", id: "button_send_message"%>
+          </p>
+        <% end %>
       <% end %>
     </div>
     <div class="for_websocket" data-id="<%= @recipient.id %>" >

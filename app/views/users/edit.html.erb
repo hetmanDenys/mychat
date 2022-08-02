@@ -18,16 +18,16 @@
     <%= form_for @user, url: { action: :update }, method: :patch do |f| %>
       <div class="row">
         <%= f.label t(:user_name) %>
-        <%= f.text_field :user_name, class: "text_field is-invalid", placeholder: current_user.user_name, type: "text", required: 'required' %>
+        <input <%= tag.attributes(class: "text_field is-invalid", placeholder: current_user.user_name, type: :text, required: 'required', name: "user[user_name]") %>>
         <% if flash[:messages] %>
           <h6 class="text-danger"><%= flash[:messages] %></h6>
         <% end %>
         <%= f.label t(:birthday) %>
-        <%= f.date_field :birthday, class: "text_field", type: "date", required: 'required', placeholder: 'Birthday' %>
+        <input <%= tag.attributes(class: "text_field", placeholder: current_user.birthday, type: :date, required: 'required', name: "user[birthday]") %>>
         <%= f.label t(:age) %>
-        <%= f.text_field :age, class: "text_field", type: "text", required: 'required', placeholder: 'Age' %>
+        <input <%= tag.attributes(class: "text_field", placeholder: current_user.age, type: :text, required: 'required', name: "user[age]") %>>
         <%= f.label t(:country) %>
-        <%= f.text_field :country, class: "text_field", placeholder: "Country", type: "text", required: 'required' %>
+        <input <%= tag.attributes(class: "text_field", placeholder: current_user.country, type: :text, required: 'required', name: "user[country]") %>>
         <%= f.file_field :avatar %>
         <%= f.submit t(:send), class: "btn btn-primary", id: "button_send_data" %>
       </div>
