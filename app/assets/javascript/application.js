@@ -3,9 +3,9 @@ import Rails from "@rails/ujs"
 import * as ActiveStorage from "@rails/activestorage"
 // import * as mdb from 'mdb-ui-kit'
 import 'websocket'
+import '@hotwired/turbo-rails'
 import 'consumer'
 import 'my_channel'
-// import 'create_dom_elements'
 
 Rails.start()
 // Turbolinks.start()

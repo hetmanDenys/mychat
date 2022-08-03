@@ -3,6 +3,7 @@ module Api
     class ApplicationController < ActionController::API
       before_action :authorized
       skip_before_action :authorized, only: %i[login]
+
       def encode_token(payload)
         JWT.encode(payload, 's3cr3t')
       end

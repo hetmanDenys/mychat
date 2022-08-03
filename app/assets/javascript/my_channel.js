@@ -1,5 +1,6 @@
 import consumer from "consumer"
 
+
 const myChannel = consumer.subscriptions.create({ channel: "MyChannel" }, {
     received(data) {
     }

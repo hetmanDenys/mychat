@@ -4,7 +4,6 @@
 //= link_tree ../../javascript .js
 //= link_tree ../../javascript/js .js
 //= link_tree ../../../vendor/javascript .js
-//= link source-map/source-map.js
 //= link jquery/dist/jquery.js
 //= link mdb-ui-kit/js/mdb.min.js
 //= link @rails/ujs/lib/assets/compiled/rails-ujs.js

@@ -1,7 +1,7 @@
 @import "users";
 @import "rooms";
 @import "main";
-//@import '../../node_modules/mdb-ui-kit/src/scss/mdb.free.scss';
+@import '../../node_modules/mdb-ui-kit/css/mdb.min';
 @font-face {
   font-family: 'Capture';
   src: url("packs/fonts/Capture-it/Capture_it.woff") format("woff");

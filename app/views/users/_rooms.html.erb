@@ -18,7 +18,7 @@
           <th scope="row"><%= counter %></th>
           <% counter += 1 %>
           <td><%= room.title %></td>
-          <td><%= link_to user_room_path(id: current_user.id, room_id: room.id, recipient_id: params[:id]),class: "btn btn-outline-secondary btn-sm" do %>
+          <td><%= link_to room_path(id: current_user.id, room_id: room.id, recipient_id: params[:id]),class: "btn btn-outline-secondary btn-sm" do %>
               <%= t(:messages) %>
             <% end %></td>
         </tr>
