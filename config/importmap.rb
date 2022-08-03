@@ -13,4 +13,7 @@ pin 'turbolinks', preload: true
 pin '@rails/activestorage', to: '@rails--activestorage.js', preload: true
 pin '@rails/ujs', to: '@rails--ujs.js', preload: true
 pin '@rails/actioncable', to: '@rails--actioncable.js', preload: true
-pin_all_from "app/assets/javascript/controllers", under: "controllers"
+pin_all_from 'app/assets/javascript/controllers', under: 'controllers'
+pin '@hotwired/turbo-rails', to: '@hotwired--turbo-rails.js'
+pin '@hotwired/turbo', to: '@hotwired--turbo.js'
+pin '@rails/actioncable/src', to: '@rails--actioncable--src.js'

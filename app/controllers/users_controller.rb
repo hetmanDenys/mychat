@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     date_sent = Date.parse(user_params[:birthday])
     date_now = Date.today
     how_many_days_have_passed = (date_now - date_sent).to_i
-    ((how_many_days_have_passed / 365.24).to_i).to_s
+    (how_many_days_have_passed / 365.24).to_i.to_s
   end
 
   def update

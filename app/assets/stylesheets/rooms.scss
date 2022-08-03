@@ -78,16 +78,20 @@ body {
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
-  flex-direction: column-reverse;
   margin-top: 10px;
 }
 
 .my {
   display: flex;
-  flex-direction: column-reverse;
   width: 100%;
   justify-content: flex-end;
   align-items: flex-end;
+}
+
+.our{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .message {
