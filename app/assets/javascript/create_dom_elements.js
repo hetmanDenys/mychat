@@ -1,4 +1,3 @@
-import Handlebars from 'handlebars'
 
 export default function createDomElements(data) {
     const data_id = document.querySelector(".for_post");

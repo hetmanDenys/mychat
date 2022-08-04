@@ -5,11 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-<<<<<<< HEAD
 gem "rails", "~> 7.0.0"
-=======
-gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
->>>>>>> parent of cc4ec55... updated rails to version 7
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
@@ -20,10 +16,10 @@ gem 'bcrypt'
 gem 'carrierwave', '~> 2.0'
 gem 'carrierwave-imageoptimizer'
 gem 'jwt'
-gem "sprockets-rails"
 gem 'mini_magick'
 gem 'rack-cors'
 gem 'rename'
+gem 'hotwire-rails'
 gem 'gon'
 gem 'kaminari'
 gem 'gon'
@@ -35,16 +31,15 @@ gem 'bootstrap-datepicker-rails'
 gem 'carrierwave', '~> 2.0'
 gem 'exifr'
 gem 'uglifier'
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 5.0'
+
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 gem 'bootstrap', '~> 5.0'
 gem 'bootstrap_form', '~> 5.1'
-gem 'devise_token_auth'
 gem 'handlebars_assets'
+gem 'handlebars'
 gem "bootstrap", "~> 5.0"
 gem "bootstrap_form", "~> 5.1"
 gem 'redis', '~> 4.0'
@@ -86,3 +81,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+gem "importmap-rails", "~> 1.1"

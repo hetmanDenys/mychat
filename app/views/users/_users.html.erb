@@ -23,7 +23,7 @@
               <% else %>
                 <%= user.email %>
               <% end %></td>
-          <td><%= link_to room_path(id: user.id),class: "btn btn-outline-secondary btn-sm" do %>
+          <td><%= link_to new_room_path(id: user.id),class: "btn btn-outline-secondary btn-sm" do %>
               <%= t(:messages) %>
             <% end %></td>
         </tr>
