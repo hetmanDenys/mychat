@@ -32,7 +32,7 @@
     <div class="name p-2 rounded-3" data-id="<%= current_user.id %>">
       <h3 class="h3"><%= @room.title %></h3>
     </div>
-    <div class="messages" data-id="<%= @room.id %>">
+    <div class="messages">
       <div class="our_messages" id="messages">
         <%= turbo_frame_tag :messages, class: 'our' do %>
           <% if @messages != [] %>
@@ -45,7 +45,7 @@
     </div>
   </div>
   <div class="two_forms">
-    <div class="for_post" data-id="<%= @recipient.id %>">
+    <div class="for_post">
         <%= bootstrap_form_with model: @model_name, url: message_create_path, id: "message_form" do |f| %>
           <p>
             <br>
@@ -70,7 +70,7 @@
 <!--        </p>-->
       <%# end %>
 <!--    </div>-->
-    <div class="for_turbo-rails" data-id="<%= @recipient.id %>" >
+    <div class="for_turbo-rails">
         <%= bootstrap_form_with model: @new_message, url: message_sent_path(room_id: params[:room_id], recipient_id: params[:recipient_id]), id: "websocket_form" do |f| %>
           <p>
             <br>

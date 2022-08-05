@@ -35,7 +35,12 @@ module Api
       end
 
       def users
-        @recipient = User.find params[:user_id]
+        first_message = Message.where(room_id: params[:room_path]).first
+        @recipient = if first_message.user_id != current_user.id
+          User.find first_message.user_id
+        else
+          User.find first_message.recipient_id
+                     end
       end
     end
   end

@@ -2,7 +2,7 @@ class RoomsController < ApplicationController
   before_action :user_and_room, only: [:show]
 
   def show
-    @room = current_user.rooms.find params[:room_id]
+    @room = Room.find params[:room_id]
     @messages = @room.messages
     if [] === @messages
       Message.create(recipient_id: @recipient.id, user_id: current_user.id,
@@ -28,11 +28,10 @@ class RoomsController < ApplicationController
                                @recipient.user_name
                              end
     end
-    @room = current_user.rooms.find(params[:room_id]) if current_user.rooms
   end
 
   def create
-    room = current_user.rooms.create(user_id: current_user.id, title: params[:title])
+    room = current_user.rooms.create(user_id: params[:id], title: params[:title])
     if room.save
       redirect_to room_path(id: current_user, room_id: room, recipient_id: params[:id])
     else

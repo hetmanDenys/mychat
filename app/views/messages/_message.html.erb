@@ -1,5 +1,5 @@
 <% if Message.where(room_id: params[:room_id]) != [] %>
-  <% if message.user_id == @recipient.id %>
+  <% if message.user_id != current_user.id %>
     <%= turbo_frame_tag dom_id(message), class: 'your' do %>
       <div class="your" data-user_id=
         <% message.recipient.id %>>
