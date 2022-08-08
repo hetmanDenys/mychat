@@ -23,7 +23,9 @@ module Api
                          @current_user.sent_messages.create(recipient_id: @recipient.id, body: params[:body],
                                                             room_id: params[:room_id])
                        end
-        @new_message.broadcast_append_to @new_message.room if @new_message.save
+        if @new_message.save
+          @new_message.broadcast_append_to @new_message.room
+        end
 
         head :ok
       end

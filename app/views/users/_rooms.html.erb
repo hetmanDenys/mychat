@@ -24,7 +24,7 @@
                 <% end %>
               <% else %>
                 <% rec_id = UserRoom.where(room_id: room.id).first %>
-                <%= link_to room_path(id: current_user.id, room_id: room.id, recipient_id: rec_id), class: "btn btn-outline-secondary btn-sm" do %>
+                <%= link_to room_path(id: current_user.id, room_id: room.id, recipient_id: rec_id.user_id), class: "btn btn-outline-secondary btn-sm" do %>
                   <%= t(:messages) %>
                 <% end %>
               <% end %>

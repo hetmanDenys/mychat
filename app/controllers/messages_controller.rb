@@ -7,7 +7,6 @@ class MessagesController < ApplicationController
                                                      room_id: params[:room_id])
     if @new_message.save
       @new_message.broadcast_append_to @new_message.room
-      render turbo_stream: turbo_stream.append(:messages, @new_message)
     else
       pp 111111111111111
     end

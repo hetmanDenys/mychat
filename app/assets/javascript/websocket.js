@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     form.addEventListener('submit', async evt => {
         evt.preventDefault()
         let formData = new FormData(form)
-        let data_for_post = document.getElementById('input_message').value
+        let data_for_post = document.getElementById('body').value
         formData.append('body', data_for_post)
         formData.append('recipient_id', recipient_id)
         formData.append('current_user_id', current_user_id)
