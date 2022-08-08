@@ -18,9 +18,17 @@
           <th scope="row"><%= counter %></th>
           <% counter += 1 %>
           <td><%= room.title %></td>
-          <td><%= link_to room_path(id: current_user.id, room_id: room.id, recipient_id: params[:id]),class: "btn btn-outline-secondary btn-sm" do %>
-              <%= t(:messages) %>
-            <% end %></td>
+          <td><% if room.user_id != current_user.id %>
+                <%= link_to room_path(id: current_user.id, room_id: room.id, recipient_id: room.user_id), class: "btn btn-outline-secondary btn-sm" do %>
+                    <%= t(:messages) %>
+                <% end %>
+              <% else %>
+                <% rec_id = UserRoom.where(room_id: room.id).first %>
+                <%= link_to room_path(id: current_user.id, room_id: room.id, recipient_id: rec_id), class: "btn btn-outline-secondary btn-sm" do %>
+                  <%= t(:messages) %>
+                <% end %>
+              <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

@@ -30,17 +30,8 @@ module Api
 
       private
 
-      def user_params
-        params.permit(:body, :user_id, :current_user_id, :file)
-      end
-
       def users
-        first_message = Message.where(room_id: params[:room_path]).first
-        @recipient = if first_message.user_id != current_user.id
-          User.find first_message.user_id
-        else
-          User.find first_message.recipient_id
-                     end
+        @recipient = User.find params[:recipient_id]
       end
     end
   end

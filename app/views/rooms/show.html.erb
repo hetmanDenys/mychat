@@ -32,7 +32,7 @@
     <div class="name p-2 rounded-3" data-id="<%= current_user.id %>">
       <h3 class="h3"><%= @room.title %></h3>
     </div>
-    <div class="messages">
+    <div class="messages" data-id="<%= @room.id %>">
       <div class="our_messages" id="messages">
         <%= turbo_frame_tag :messages, class: 'our' do %>
           <% if @messages != [] %>
@@ -45,8 +45,8 @@
     </div>
   </div>
   <div class="two_forms">
-    <div class="for_post">
-        <%= bootstrap_form_with model: @model_name, url: message_create_path, id: "message_form" do |f| %>
+    <div class="for_post" data-id="<%= @recipient.id %>">
+        <%= bootstrap_form_with model: @model_name, url: message_create_path(recipient_id: @recipient.id), id: "message_form" do |f| %>
           <p>
             <br>
             <%= f.text_field :input_message, class: "text_field", placeholder: "Write something...", type: "text", required: 'required'%>
