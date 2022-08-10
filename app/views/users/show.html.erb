@@ -1,28 +1,26 @@
 <header>
   <div class = "general">
-    <div class="left">
       <div class = "hello">
         <h3 class="user"><%= t(:welcome) %>, <%= @user_name %></h3>
       </div>
-    </div>
-    <div class="right">
+    <div class="right items-center">
       <% if current_user.avatar.file %>
-        <div class="margin">
+        <div class="mr-1.5 content-center">
           <%= link_to image_tag(current_user.avatar.url(:thumb), class: "avatar"), { action: "edit", controller: "users", id: current_user.id } %>
         </div>
       <% else %>
-        <div class="margin">
+        <div class="mr-1.5 items-center">
           <%= link_to t(:profile), action: "edit", controller: "users", id: current_user.id %>
         </div>
       <% end %>
-      <div class="margin">
-        <%= link_to 'En', root_url(locale: :en), :method => :get, class: "btn btn-light btn-outline-info" %>
+      <div class="mr-1.5 items-center">
+        <%= link_to 'En', root_url(locale: :en), :method => :get, class: "shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-1.5 px-3 rounded" %>
       </div>
-      <div class="margin">
-        <%= link_to 'Ua', root_url(locale: :ua), :method => :get, class: "btn btn-light btn-outline-info" %>
+      <div class="mr-1.5 items-center">
+        <%= link_to 'Ua', root_url(locale: :ua), :method => :get, class: "shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-1.5 px-3 rounded" %>
       </div>
-      <div class="margin">
-        <%= link_to t(:exit), destroy_user_session_path, data: {confirm: t(:sure)}, :method => :delete, class: "btn btn-light btn-outline-danger" %>
+      <div class="mr-1.5 items-center">
+        <%= link_to t(:exit), destroy_user_session_path, data: {confirm: t(:sure)}, :method => :delete, class: "shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold py-1.5 px-3 rounded" %>
       </div>
     </div>
   </div>

@@ -1,13 +1,11 @@
 <header>
   <div class = "general">
-    <div class="left">
       <div class = "hello">
         <h3 class="user"><%= @user_name %></h3>
       </div>
-    </div>
-    <div class="right">
-      <div class="margin">
-        <%= link_to t(:go_back), root_path, class: "btn btn-light btn-outline-warning" %>
+    <div class="right items-center">
+      <div class="mr-1.5 items-center">
+        <%= link_to t(:go_back), root_path, class: "shadow bg-yellow-500 hover:bg-yellow-400 focus:shadow-outline focus:outline-none text-white font-bold py-1.5 px-3 rounded" %>
       </div>
     </div>
   </div>
@@ -17,19 +15,19 @@
   <div class="for_user_page">
     <%= form_for @user, url: { action: :update }, method: :patch do |f| %>
       <div class="row">
-        <%= f.label t(:user_name) %>
+        <%= f.label t(:user_name), class: 'block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' %>
         <input <%= tag.attributes(class: "text_field is-invalid", placeholder: current_user.user_name, type: :text, required: 'required', name: "user[user_name]") %>>
         <% if flash[:messages] %>
           <h6 class="text-danger"><%= flash[:messages] %></h6>
         <% end %>
-        <%= f.label t(:birthday) %>
+        <%= f.label t(:birthday), class: 'block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' %>
         <input <%= tag.attributes(class: "text_field", placeholder: current_user.birthday, type: :date, required: 'required', name: "user[birthday]") %>>
-        <%= f.label t(:age) %>
+        <%= f.label t(:age), class: 'block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' %>
         <input <%= tag.attributes(class: "text_field", placeholder: current_user.age, type: :text, required: 'required', name: "user[age]") %>>
-        <%= f.label t(:country) %>
+        <%= f.label t(:country), class: 'block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' %>
         <input <%= tag.attributes(class: "text_field", placeholder: current_user.country, type: :text, required: 'required', name: "user[country]") %>>
         <%= f.file_field :avatar %>
-        <%= f.submit t(:send), class: "btn btn-primary", id: "button_send_data" %>
+        <%= f.button t(:send), class: "shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-1.5 px-2.5 rounded", id: "button_send_data" %>
       </div>
     <% end %>
   </div>

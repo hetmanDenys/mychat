@@ -1,13 +1,11 @@
 <header>
   <div class = "general">
-    <div class="left">
       <div class = "hello">
         <h3 class="user"><%= @user_name %></h3>
       </div>
-    </div>
-    <div class="right">
-      <div class="margin">
-        <%= link_to t(:go_back), root_path, class: "btn btn-light btn-outline-warning" %>
+    <div class="right items-center">
+      <div class="mr-1.5 items-center">
+        <%= link_to t(:go_back), root_path, class: "shadow bg-yellow-500 hover:bg-yellow-400 focus:shadow-outline focus:outline-none text-white font-bold py-1.5 px-3 rounded" %>
       </div>
     </div>
   </div>
@@ -18,7 +16,7 @@
   <div class="for_user_page">
     <%= form_with url: rooms_path do |f| %>
       <div class="row">
-        <%= f.label t(:room_name) %>
+        <%= f.label t(:room_name), class: 'block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' %>
         <%= f.text_field :title, class: "text_field is-invalid", placeholder: 'room name', type: "text", required: 'required' %>
         <%= f.hidden_field :id, value: params[:id] %>
         <% if Room.count == 0 %>
@@ -29,7 +27,7 @@
         <%# if flash[:messages] %>
 <!--          <h6 class="text-danger"><%#= flash[:messages] %></h6>-->
         <%# end %>
-        <%= f.submit t(:create), class: "btn btn-primary", id: "button_send_data" %>
+        <%= f.submit t(:create), class: "shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-1.5 px-3 rounded", id: "button_send_data" %>
       </div>
     <% end %>
   </div>

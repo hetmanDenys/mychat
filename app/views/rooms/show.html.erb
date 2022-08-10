@@ -1,25 +1,23 @@
-<header class="header">
-  <div class="general">
-    <div class="left">
-      <div class="hello">
-        <h3 class="user"><%= @user_name %></h3>
+<header>
+  <div class = "general">
+      <div class = "hello">
+        <h3 class="user"><%= t(:welcome) %>, <%= @user_name %></h3>
       </div>
-    </div>
-    <div class="right">
+    <div class="right items-center">
       <% if current_user.avatar.file %>
-        <div class="margin">
-          <%= link_to image_tag(current_user.avatar.url(:thumb), class: "avatar"), { action: "edit", controller: "users", id: current_user.id }, class: "for_avatar" %>
+        <div class="mr-1.5 content-center">
+          <%= link_to image_tag(current_user.avatar.url(:thumb), class: "avatar"), { action: "edit", controller: "users", id: current_user.id } %>
         </div>
       <% else %>
-        <div class="margin">
+        <div class="mr-1.5 items-center">
           <%= link_to t(:profile), action: "edit", controller: "users", id: current_user.id %>
         </div>
       <% end %>
-      <div class="margin">
-        <%= link_to t(:go_back), root_path, class: "btn btn-light btn-outline-warning" %>
+      <div class="mr-1.5 items-center">
+        <%= link_to t(:go_back), root_path, class: "shadow bg-yellow-500 hover:bg-yellow-400 focus:shadow-outline focus:outline-none text-white font-bold py-1.5 px-3 rounded" %>
       </div>
-      <div class="margin">
-        <%= link_to t(:exit), destroy_user_session_path, data: { confirm: "Are you sure?" }, :method => :delete, class: "btn btn-light btn-outline-danger" %>
+      <div class="mr-1.5 items-center">
+        <%= link_to t(:exit), destroy_user_session_path, data: {confirm: t(:sure)}, :method => :delete, class: "shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold py-1.5 px-3 rounded" %>
       </div>
     </div>
   </div>
@@ -44,7 +42,7 @@
   </div>
   <div class="two_forms">
     <div class="for_post" data-id="<%= @recipient.id %>">
-      <%= bootstrap_form_with model: @model_name, url: message_create_path(recipient_id: @recipient.id), id: "message_form" do |f| %>
+      <%= bootstrap_form_with model: @model_name, class: 'w-full max-w-sm', url: message_create_path(recipient_id: @recipient.id), id: "message_form" do |f| %>
         <p>
           <br>
           <%= f.text_field :body, autofocus: true, class: "text_field", placeholder: "Write something...", type: "text", required: 'required' %>
@@ -52,7 +50,7 @@
         </p>
 
         <p>
-          <%= f.submit t(:send), class: "btn btn-info", id: "button_send_message" %>
+          <%= f.button t(:send), class: "shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-1.5 px-3 rounded", id: "button_send_message" %>
         </p>
       <% end %>
     </div>
@@ -69,14 +67,14 @@
     <%# end %>
     <!--    </div>-->
     <div class="for_turbo-rails">
-      <%= bootstrap_form_with model: @new_message, url: message_sent_path(room_id: params[:room_id], recipient_id: params[:recipient_id]), id: "websocket_form" do |f| %>
+      <%= bootstrap_form_with model: @new_message, class: 'w-full max-w-sm', url: message_sent_path(room_id: params[:room_id], recipient_id: params[:recipient_id]), id: "websocket_form" do |f| %>
         <p>
           <br>
           <%= f.text_field :body, autofocus: true, class: "text_field", placeholder: "Write something...", type: "text", required: 'required' %>
         </p>
 
         <p>
-          <%= f.submit t(:send), class: "btn btn-info", id: "button_for_websocket" %>
+          <%= f.button t(:send), class: "shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-1.5 px-3 rounded", id: "button_for_websocket" %>
         </p>
       <% end %>
     </div>

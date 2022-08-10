@@ -1,6 +1,6 @@
 <div class="for_table">
   <table class="table">
-    <thead class="thead-dark">
+    <thead class="bg-zinc-300">
     <tr>
       <th scope="col">#</th>
       <th scope="col"><%= t(:email) %></th>
@@ -15,7 +15,7 @@
     <% end %>
     <% users.each do |user|%>
       <% if user != current_user %>
-        <tr class="<%= cycle('white', 'blue', 'dark-blue') -%>">
+        <tr class="<%= cycle('bg-blue-50', 'bg-blue-100', 'bg-blue-200') -%>">
           <th scope="row"><%= counter %></th>
           <% counter += 1 %>
           <td><% if user.user_name != '' %>
@@ -23,7 +23,7 @@
               <% else %>
                 <%= user.email %>
               <% end %></td>
-          <td><%= link_to new_room_path(recipient_id: user.id),class: "btn btn-outline-secondary btn-sm" do %>
+          <td><%= link_to new_room_path(recipient_id: user.id),class: "shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-1.5 px-2.5 rounded" do %>
               <%= t(:messages) %>
             <% end %></td>
         </tr>
