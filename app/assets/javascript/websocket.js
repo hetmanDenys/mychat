@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-    const data_id = document.querySelector(".for_post");
+    const data_id = document.querySelector(".block");
     let recipient_id = data_id.dataset.id;
     const data_id_for_room = document.querySelector(".messages");
     let room_id = data_id_for_room.dataset.id;

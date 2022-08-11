@@ -1,14 +1,12 @@
 <header>
-  <div class = "general">
       <div class = "hello">
         <h3 class="user"><%= @user_name %></h3>
       </div>
     <div class="right items-center">
       <div class="mr-1.5 items-center">
-        <%= link_to t(:go_back), root_path, class: "shadow bg-yellow-500 hover:bg-yellow-400 focus:shadow-outline focus:outline-none text-white font-bold py-1.5 px-3 rounded" %>
+        <%= link_to t(:go_back), root_path, class: "back shadow bg-yellow-500 hover:bg-yellow-400 focus:shadow-outline focus:outline-none text-white font-bold rounded mr-4 ml-1" %>
       </div>
     </div>
-  </div>
 </header>
 
 <%# if Room.count === 0 %>
@@ -17,8 +15,8 @@
     <%= form_with url: rooms_path do |f| %>
       <div class="row">
         <%= f.label t(:room_name), class: 'block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' %>
-        <%= f.text_field :title, class: "text_field is-invalid", placeholder: 'room name', type: "text", required: 'required' %>
-        <%= f.hidden_field :id, value: params[:id] %>
+        <%= f.text_field :title, class: "text_field is-invalid mb-3", placeholder: 'room name', type: "text", required: 'required' %>
+        <%= f.hidden_field :recipient_id, value: params[:recipient_id] %>
         <% if Room.count == 0 %>
           <%= f.hidden_field :room_id, value: 1 %>
         <% else %>

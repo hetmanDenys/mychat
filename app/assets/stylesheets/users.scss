@@ -3,19 +3,30 @@ table{
   margin-left: 1300px;
   margin-right: 1300px;
 }
-.chat-padding{
-  padding-top: 50px;
-}
 .chat-pagination{
   display: flex;
-  align-content: center;
-  justify-content: center;
+  align-content: flex-start;
+  justify-content: flex-start;
 }
 .for_table{
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
-  width: auto;
+  width: 100%;
+  max-width: 100%;
+  min-height: 90%;
+  max-height: 90%;
+}
+table{
+  max-width: 10%;
+  min-width: 5%;
+  min-height: 90%;
+  max-height: 90%;
+  margin: 0;
+}
+.for_table_users{
+  width: 5%;
 }
 th{
   padding-right: 50px;
@@ -30,18 +41,10 @@ th{
   align-items: center;
   margin-right: 10px;
 }
-.hello{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .general {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.user{
-  color: #c6c3c3;
 }
 
 .right{
@@ -88,21 +91,12 @@ th{
   display: flex;
   justify-content: center;
 }
-.blue{
-  background-color: #ebfdf4;
-}
-.white{
-  background-color: #f1fdfd;
-}
-.dark-blue{
-  background-color: #e3fdf0;
-}
 
 .for_user_page{
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 3%;
+  margin-top: 10%;
   min-width: 30%;
   max-width: 30%;
 }

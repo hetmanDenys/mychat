@@ -109,7 +109,6 @@ form {
     height: 35px;
     border-radius: 5px;
     border: 1px solid #e1e1e1;
-    margin-bottom: 10px;
     text-indent: 10px;
     outline: none;
     -webkit-transition: box-shadow 1s;
@@ -121,9 +120,9 @@ form {
       box-shadow: 0 0 3px 1px #a2d7fc;
     }
   }
-
-  width: 70%;
-  margin: 30px auto;
+  height: 100%;
+  width: 100%;
+  margin-top: 10px;
   text-align: center;
 
   label {
@@ -150,8 +149,11 @@ form {
 }
 
 header {
+  display: flex;
+  align-items: center;
   background: #343a40;
-  height: 50px;
+  justify-content: space-between;
+  height: 3.5%;
 }
 .link {
   background: #c6c3c3;
@@ -174,19 +176,33 @@ header {
   justify-content: center;
   align-items: center;
 }
-.general {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 .user {
   color: #fff;
-  margin-left: 15px;
-  margin-top: 5px;
 }
 .hidden{
 display: none;
 }
 .pink{
   background-color: #f3bdff;
+}
+.blue{
+  background-color: #ebfdf4;
+}
+.white{
+  background-color: #f1fdfd;
+}
+.dark-blue{
+  background-color: #e3fdf0;
+}
+.back{
+  display: inline-block;
+  padding: 3%;
+}
+.exit{
+  display: inline-block;
+  padding: 3%;
+}
+.locale{
+  display: inline-block;
+  padding: 7%;
 }

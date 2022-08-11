@@ -6,7 +6,7 @@
       <%#= link_to message.file, '/files/' + message.file, class: "link link-info", download: message.file %>
       <!--          < /div>-->
       <%# end %>
-      <div class="alert alert-primary message shadow-md" id="dataset_current_user_id">
+      <div class="alert alert-primary message shadow-md" id="<%= message.user_id %>" data-controller="change">
         <p class="text color time"><%= l(message.created_at, format: :message_time) %> </p>
         <p class="text content"><%= Obscenity.replacement(:stars).sanitize(message.body) %></p>
       </div>
