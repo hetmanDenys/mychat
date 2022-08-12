@@ -1,10 +1,10 @@
-<header>
+<header class="bg-gradient-to-r from-cyan-500 to-blue-500">
       <div class = "hello">
         <h3 class="user"><%= @user_name %></h3>
       </div>
     <div class="right items-center">
       <div class="mr-1.5 items-center">
-        <%= link_to t(:go_back), root_path, class: "back shadow bg-yellow-500 hover:bg-yellow-400 focus:shadow-outline focus:outline-none text-white font-bold rounded mr-4 ml-1" %>
+        <%= link_to t(:go_back), root_path, class: "back shadow bg-yellow-400 hover:bg-yellow-300 p-1 focus:shadow-outline focus:outline-none text-white font-bold rounded mr-4 ml-1" %>
       </div>
     </div>
 </header>
@@ -24,7 +24,8 @@
         <input <%= tag.attributes(class: "text_field", placeholder: current_user.age, type: :text, required: 'required', name: "user[age]") %>>
         <%= f.label t(:country), class: 'block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' %>
         <input <%= tag.attributes(class: "text_field", placeholder: current_user.country, type: :text, required: 'required', name: "user[country]") %>>
-        <%= f.file_field :avatar %>
+        <%= f.label t(:file), class: "block uppercase mt-3 tracking-wide text-gray-700 text-xs font-bold mb-2" %>
+        <%= f.file_field :avatar, class: 'block mb-3 mt-1 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400'%>
         <%= f.button t(:send), class: "shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-1.5 px-2.5 rounded", id: "button_send_data" %>
       </div>
     <% end %>

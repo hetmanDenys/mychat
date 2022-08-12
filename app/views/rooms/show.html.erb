@@ -1,11 +1,11 @@
-<header>
+<header class="bg-gradient-to-r from-cyan-500 to-blue-500">
   <div class="hello">
     <h3 class="user"><%= t(:welcome) %>, <%= @user_name %></h3>
   </div>
   <div class="right items-center">
     <% if current_user.avatar.file %>
       <div class="mr-1.5 content-center">
-        <%= link_to image_tag(current_user.avatar.url(:thumb), class: "avatar"), { action: "edit", controller: "users", id: current_user.id } %>
+        <%= link_to image_tag(current_user.avatar.url(:thumb), class: "avatar rounded-full"), { action: "edit", controller: "users", id: current_user.id } %>
       </div>
     <% else %>
       <div class="mr-1.5 items-center">
@@ -13,21 +13,21 @@
       </div>
     <% end %>
     <div class="mr-1.5 items-center">
-      <%= link_to t(:go_back), root_path, class: "back shadow bg-yellow-500 hover:bg-yellow-400 focus:shadow-outline focus:outline-none text-white font-bold rounded mr-4 ml-1" %>
+      <%= link_to t(:go_back), root_path, class: "back shadow bg-yellow-400 hover:bg-yellow-300 p-1 focus:shadow-outline focus:outline-none text-white font-bold rounded mr-1 ml-1" %>
     </div>
     <div class="mr-1.5 items-center">
-      <%= link_to t(:exit), destroy_user_session_path, data: { confirm: t(:sure) }, :method => :delete, class: "exit shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold rounded mr-2" %>
+      <%= link_to t(:exit), destroy_user_session_path, data: { confirm: t(:sure) }, :method => :delete, class: "exit shadow p-1 bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold rounded mr-2" %>
     </div>
   </div>
 </header>
 
 <%= turbo_stream_from @room %>
-<div class="name p-2 rounded-3" data-id="<%= params[:id] %>">
+<div class="name p-2 rounded-3 bg-blue-200" data-id="<%= params[:id] %>">
   <h3 class="text-3xl"><%= @room.title %></h3>
 </div>
 <!--<div class="for_all flex">-->
 
-<div class="output flex">
+<div class="output flex bg-gradient-to-r from-indigo-100 to-blue-300">
 
   <div class="abc">
     <div class="messages container" data-id="<%= @room.id %>">

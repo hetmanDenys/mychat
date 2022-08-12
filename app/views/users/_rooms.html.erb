@@ -1,36 +1,36 @@
-<div class="for_table">
-  <table class="table">
-    <thead class="bg-zinc-300">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col"><%= t(:rooms) %></th>
-      <th colspan="2"></th>
-    </tr>
-    </thead>
-    <tbody>
+<!--<div class="for_table">-->
+<!--  <table class="table">-->
+<!--    <thead class="bg-zinc-300">-->
+<!--    <tr>-->
+<!--      <th scope="col">#</th>-->
+<!--      <th scope="col"><%#= t(:rooms) %></th>-->
+<!--      <th colspan="2"></th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
     <%# if params[:page].to_i === 0%>
       <%# counter = 1 %>
     <%# else %>
       <%# counter = 1 + (5 * (params[:page].to_i - 1)) %>
     <%# end %>
-    <% @rooms.each do |room|%>
-        <tr>
-          <th scope="row"><%#= counter %></th>
+    <%# @rooms.each do |room|%>
+<!--        <tr>-->
+<!--          <th scope="row"><%##= counter %></th>-->
           <%# counter += 1 %>
-          <td><%= room.title %></td>
-          <td><% if room.user_id != current_user.id %>
-                <%= link_to room_path(id: current_user.id, room_id: room.id, recipient_id: room.user_id), class: "shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-1.5 px-2.5 rounded" do %>
-                    <%= t(:messages) %>
-                <% end %>
-              <% else %>
-                <% rec_id = UserRoom.where(room_id: room.id).first %>
-                <%= link_to room_path(id: current_user.id, room_id: room.id, recipient_id: rec_id.user_id), class: "shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-1.5 px-2.5 rounded" do %>
-                  <%= t(:messages) %>
-                <% end %>
-              <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+<!--          <td><%#= room.title %></td>-->
+<!--          <td><%# if room.user_id != current_user.id %>-->
+                <%#= link_to room_path(id: current_user.id, room_id: room.id, recipient_id: room.user_id), class: "shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-1.5 px-2.5 rounded" do %>
+                    <%#= t(:messages) %>
+                <%# end %>
+              <%# else %>
+                <%# rec_id = UserRoom.where(room_id: room.id).first %>
+                <%#= link_to room_path(id: current_user.id, room_id: room.id, recipient_id: rec_id.user_id), class: "shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-1.5 px-2.5 rounded" do %>
+                  <%#= t(:messages) %>
+                <%# end %>
+              <%# end %>
+<!--          </td>-->
+<!--        </tr>-->
+      <%# end %>
+<!--    </tbody>-->
+<!--  </table>-->
+<!--</div>-->

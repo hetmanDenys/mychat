@@ -1,12 +1,22 @@
-<header>
-      <div class = "hello">
-        <h3 class="user"><%= @user_name %></h3>
+<header class="bg-gradient-to-r from-cyan-500 to-blue-500">
+  <div class="hello">
+    <h3 class="user"><%= @user_name %></h3>
+  </div>
+  <div class="right items-center">
+    <% if current_user.avatar.file %>
+      <div class="mr-1.5 content-center">
+        <%= link_to image_tag(current_user.avatar.url(:thumb), class: "avatar rounded-full"), { action: "edit", controller: "users", id: current_user.id } %>
       </div>
-    <div class="right items-center">
+    <% else %>
       <div class="mr-1.5 items-center">
-        <%= link_to t(:go_back), root_path, class: "back shadow bg-yellow-500 hover:bg-yellow-400 focus:shadow-outline focus:outline-none text-white font-bold rounded mr-4 ml-1" %>
+        <%= link_to t(:profile), action: "edit", controller: "users", id: current_user.id %>
       </div>
+    <% end %>
+    <div class="mr-1.5 items-center">
+      <%= link_to t(:go_back), root_path, class: "back shadow p-1 bg-yellow-400 hover:bg-yellow-300 focus:shadow-outline focus:outline-none text-white font-bold rounded mr-4 ml-1" %>
     </div>
+
+  </div>
 </header>
 
 <%# if Room.count === 0 %>
@@ -23,7 +33,7 @@
           <%= f.hidden_field :room_id, value: Room.last.id + 1 %>
         <% end %>
         <%# if flash[:messages] %>
-<!--          <h6 class="text-danger"><%#= flash[:messages] %></h6>-->
+        <!--          <h6 class="text-danger"><%#= flash[:messages] %></h6>-->
         <%# end %>
         <%= f.submit t(:create), class: "shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-1.5 px-3 rounded", id: "button_send_data" %>
       </div>
