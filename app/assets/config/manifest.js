@@ -2,7 +2,6 @@
 //= link_directory ../stylesheets .scss
 //= link application.css
 //= link_tree ../../javascript .js
-//= link_tree ../../javascript/js .js
 //= link_tree ../../../vendor/javascript .js
 //= link jquery/dist/jquery.js
 //= link mdb-ui-kit/js/mdb.min.js

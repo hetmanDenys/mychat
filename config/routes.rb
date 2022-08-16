@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
-    devise_for :users, controllers: { sessions: 'sessions' }
+    devise_for :users, controllers: { sessions: 'sessions', registrations: 'registrations' }
     resources :users, only: %i[update edit create]
     resources :rooms, only: %i[edit delete show create new]
     post '/login', to: 'api/v1/application#login'

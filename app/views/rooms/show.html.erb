@@ -31,7 +31,7 @@
 <div class="output flex bg-gradient-to-r from-indigo-100 to-blue-300">
 
   <div class="abc">
-    <div class="messages container" data-id="<%= @room.id %>">
+    <div class="messages container overflow-scroll" data-id="<%= @room.id %>">
       <div class="our_messages" id="messages">
         <%= turbo_frame_tag :messages, class: 'our' do %>
           <% @messages.each do |message| %>
