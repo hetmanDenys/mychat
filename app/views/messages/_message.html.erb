@@ -1,32 +1,14 @@
-<% if Message.where(room_id: params[:room_id]) != [] %>
-  <% if message.user_id == @recipient.id %>
-    <%= turbo_frame_tag dom_id(message), class: 'your' do %>
-      <div class="your" data-user_id=
-        <% message.recipient.id %>>
-        <% if message.file %>
-          <div id="for_file_downloading">
-            <%= link_to message.file, '/files/' + message.file, class: "link link-info", download: message.file %>
-          </div>
-        <% end %>
-        <div class="alert alert-primary message">
-          <p class="text color time"><%= l(message.created_at, format: :message_time) %> </p>
-          <p class="text content"><%= Obscenity.replacement(:stars).sanitize(message.body) %></p>
-        </div>
+
+<%= turbo_frame_tag dom_id(message), class: 'width' do %>
+    <div class="hidden" id="<%= message.user_id %>" data-controller="hello">
+      <%# if message.file %>
+      <!--          <div id="for_file_downloading">-->
+      <%#= link_to message.file, '/files/' + message.file, class: "link link-info", download: message.file %>
+      <!--          < /div>-->
+      <%# end %>
+      <div class="alert alert-primary message" id="dataset_current_user_id">
+        <p class="text color time"><%= l(message.created_at, format: :message_time) %> </p>
+        <p class="text content"><%= Obscenity.replacement(:stars).sanitize(message.body) %></p>
       </div>
-    <% end %>
-  <% else %>
-    <%= turbo_frame_tag dom_id(message), class: 'my' do %>
-      <div class="my">
-        <% if message.file %>
-          <div id="for_file_downloading">
-            <%= link_to message.file, '/files/' + message.file, class: "link link-info", download: message.file %>
-          </div>
-        <% end %>
-        <div class="alert alert-primary message">
-          <p class="text content"><%= Obscenity.replacement(:stars).sanitize(message.body) %></p>
-          <p class="text color time"><%= l(message.created_at, format: :message_time) %> </p>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
+    </div>
 <% end %>

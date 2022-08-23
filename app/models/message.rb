@@ -8,6 +8,6 @@ class Message < ApplicationRecord
   #   broadcast_append_to 'messages', target: 'messages', partial: 'messages/message', locals: { message: self }
   # end
 
-  validates :body, presence: true
-  validates_with MyValidator
+  # validates :body, presence: true
+  # validates_with MyValidator
 end

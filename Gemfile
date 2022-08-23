@@ -20,7 +20,6 @@ gem 'mini_magick'
 gem 'rack-cors'
 gem 'rename'
 gem 'hotwire-rails'
-gem 'gon'
 gem 'kaminari'
 gem 'gon'
 gem 'rubocop-rails', require: false

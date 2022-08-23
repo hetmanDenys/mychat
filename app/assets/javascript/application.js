@@ -3,6 +3,7 @@ import Rails from "@rails/ujs"
 import * as ActiveStorage from "@rails/activestorage"
 // import * as mdb from 'mdb-ui-kit'
 import 'websocket'
+import 'controllers'
 import '@hotwired/turbo-rails'
 // import 'consumer'
 // import 'my_channel'

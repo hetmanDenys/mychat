@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     const data_id = document.querySelector(".for_post");
-    let user_id = data_id.dataset.id;
+    let recipient_id = data_id.dataset.id;
     const data_id_for_room = document.querySelector(".messages");
     let room_id = data_id_for_room.dataset.id;
     const current_data_id = document.querySelector(".name");
@@ -11,9 +11,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     form.addEventListener('submit', async evt => {
         evt.preventDefault()
         let formData = new FormData(form)
-        let data_for_post = document.getElementById('input_message').value
+        let data_for_post = document.getElementById('body').value
         formData.append('body', data_for_post)
-        formData.append('user_id', user_id)
+        formData.append('recipient_id', recipient_id)
         formData.append('current_user_id', current_user_id)
         formData.append('room_id', room_id)
         await postData(url, formData)

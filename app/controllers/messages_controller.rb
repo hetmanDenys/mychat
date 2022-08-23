@@ -1,14 +1,12 @@
 class MessagesController < ApplicationController
-  before_action :set_room, only: [:message_sent]
-  before_action :set_messages, only: [:message_sent]
+  before_action :set_room, only: %i[message_sent set_messages]
+  before_action :set_messages, only: %i[message_sent]
 
   def message_sent
     @new_message = current_user.sent_messages.create(recipient_id: params[:recipient_id], body: params[:body],
                                                      room_id: params[:room_id])
-
     if @new_message.save
       @new_message.broadcast_append_to @new_message.room
-      render turbo_stream: turbo_stream.append(:messages, @new_message)
     else
       pp 111111111111111
     end

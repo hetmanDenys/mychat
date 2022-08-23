@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @user_count = User.count
     @user_id = current_user.id
     @users_show = User.order(:id).page params[:page]
-    @rooms = current_user.rooms.all
+    @rooms = current_user.rooms.all + Room.where(user_id: current_user.id)
   end
 
   def edit
