@@ -1,84 +1,80 @@
-<header class="header">
-  <div class="general">
-    <div class="left">
-      <div class="hello">
-        <h3 class="user"><%= @user_name %></h3>
+<header class="bg-gradient-to-r from-cyan-500 to-blue-500">
+  <div class="hello">
+    <h3 class="user"><%= t(:welcome) %>, <%= @user_name %></h3>
+  </div>
+  <div class="right items-center">
+    <% if current_user.avatar.file %>
+      <div class="mr-1.5 content-center">
+        <%= link_to image_tag(current_user.avatar.url(:thumb), class: "avatar rounded-full"), { action: "edit", controller: "users", id: current_user.id } %>
       </div>
+    <% else %>
+      <div class="mr-1.5 items-center">
+        <%= link_to t(:profile), action: "edit", controller: "users", id: current_user.id %>
+      </div>
+    <% end %>
+    <div class="mr-1.5 items-center">
+      <%= link_to t(:go_back), root_path, class: "back shadow bg-yellow-400 hover:bg-yellow-300 p-1 focus:shadow-outline focus:outline-none text-white font-bold rounded mr-1 ml-1" %>
     </div>
-    <div class="right">
-      <% if current_user.avatar.file %>
-        <div class="margin">
-          <%= link_to image_tag(current_user.avatar.url(:thumb), class: "avatar"), { action: "edit", controller: "users", id: current_user.id }, class: "for_avatar" %>
-        </div>
-      <% else %>
-        <div class="margin">
-          <%= link_to t(:profile), action: "edit", controller: "users", id: current_user.id %>
-        </div>
-      <% end %>
-      <div class="margin">
-        <%= link_to t(:go_back), root_path, class: "btn btn-light btn-outline-warning" %>
-      </div>
-      <div class="margin">
-        <%= link_to t(:exit), destroy_user_session_path, data: { confirm: "Are you sure?" }, :method => :delete, class: "btn btn-light btn-outline-danger" %>
-      </div>
+    <div class="mr-1.5 items-center">
+      <%= link_to t(:exit), destroy_user_session_path, data: { confirm: t(:sure) }, :method => :delete, class: "exit shadow p-1 bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold rounded mr-2" %>
     </div>
   </div>
 </header>
 
 <%= turbo_stream_from @room %>
+<div class="name p-2 rounded-3 bg-blue-200" data-id="<%= params[:id] %>">
+  <h3 class="text-3xl"><%= @room.title %></h3>
+</div>
+<!--<div class="for_all flex">-->
 
-<div class="for_all border border-primary border-3 rounded-6">
-  <div class="output rounded-4">
-    <div class="name p-2 rounded-3" data-id="<%= params[:id] %>">
-      <h3 class="h3"><%= @room.title %></h3>
-    </div>
-    <div class="messages" data-id="<%= @room.id %>">
+<div class="output flex bg-gradient-to-r from-indigo-100 to-blue-300">
+
+  <div class="abc">
+    <div class="messages container" data-id="<%= @room.id %>">
       <div class="our_messages" id="messages">
         <%= turbo_frame_tag :messages, class: 'our' do %>
           <% @messages.each do |message| %>
-              <%= render partial: 'messages/message', locals: { message: message, cur_user: @current_user } %>
+            <%= render partial: 'messages/message', locals: { message: message, cur_user: @current_user } %>
           <% end %>
         <% end %>
       </div>
     </div>
-  </div>
-  <div class="two_forms">
-    <div class="for_post" data-id="<%= @recipient.id %>">
-      <%= bootstrap_form_with model: @model_name, url: message_create_path(recipient_id: @recipient.id), id: "message_form" do |f| %>
-        <p>
-          <br>
-          <%= f.text_field :body, autofocus: true, class: "text_field", placeholder: "Write something...", type: "text", required: 'required' %>
+    <div class="block" data-id="<%= @recipient.id %>">
+      <%= form_with model: @model_name, class: '', url: message_create_path(recipient_id: @recipient.id), id: "message_form" do |f| %>
+        <div class="flex">
+          <%= f.text_field :body, autofocus: true, class: "block text-sm font-medium text-gray-900 dark:text-gray-300 px-2", placeholder: "Write something...", type: "text", required: 'required' %>
           <%#= f.file_field :file, name: "file", accept: "/home/user/RubymineProjects/demo/app/assets/images/*", type: 'file' %>
-        </p>
-
-        <p>
-          <%= f.submit t(:send), class: "btn btn-info", id: "button_send_message" %>
-        </p>
-      <% end %>
-    </div>
-    <!--    <div class="for_websocket" data-id="<%#= @recipient.id %>" >-->
-    <%#= bootstrap_form_with model: @model_name, url: message_create_path, method: :patch, id: "websocket_form" do |f| %>
-    <!--        <p>-->
-    <!--          <br>-->
-    <%#= f.text_field :input_for_websocket, class: "text_field", placeholder: "Write something...", type: "text", required: 'required'%>
-    <!--        </p>-->
-
-    <!--        <p>-->
-    <%#= f.submit t(:send), class: "btn btn-light btn-info", id: "button_for_websocket"%>
-    <!--        </p>-->
-    <%# end %>
-    <!--    </div>-->
-    <div class="for_turbo-rails">
-      <%= bootstrap_form_with model: @new_message, url: message_sent_path(room_id: params[:room_id], recipient_id: params[:recipient_id]), id: "websocket_form" do |f| %>
-        <p>
-          <br>
-          <%= f.text_field :body, autofocus: true, class: "text_field", placeholder: "Write something...", type: "text", required: 'required' %>
-        </p>
-
-        <p>
-          <%= f.submit t(:send), class: "btn btn-info", id: "button_for_websocket" %>
-        </p>
+          <%= f.button t(:send), class: "shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold  rounded mb-2 px-4 py-1", id: "button_send_message" %>
+        </div>
       <% end %>
     </div>
   </div>
+  <!--  </div>-->
+  <!--  <div class="two_forms">-->
+
+  <!--    <div class="for_websocket" data-id="<%#= @recipient.id %>" >-->
+  <%#= bootstrap_form_with model: @model_name, url: message_create_path, method: :patch, id: "websocket_form" do |f| %>
+  <!--        <p>-->
+  <!--          <br>-->
+  <%#= f.text_field :input_for_websocket, class: "text_field", placeholder: "Write something...", type: "text", required: 'required'%>
+  <!--        </p>-->
+
+  <!--        <p>-->
+  <%#= f.submit t(:send), class: "btn btn-light btn-info", id: "button_for_websocket"%>
+  <!--        </p>-->
+  <%# end %>
+  <!--    </div>-->
+  <!--    <div class="for_turbo-rails">-->
+  <%#= form_with model: @new_message, class: 'w-full max-w-sm', url: message_sent_path(room_id: params[:room_id], recipient_id: params[:recipient_id]), id: "websocket_form" do |f| %>
+  <!--        <p>-->
+  <!--          <br>-->
+  <%#= f.text_field :body, autofocus: true, class: "shadow", placeholder: "Write something...", type: "text", required: 'required' %>
+  <!--        </p>-->
+
+  <!--        <p>-->
+  <%#= f.button t(:send), class: "shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-1.5 px-3 rounded", id: "button_for_websocket" %>
+  <!--        </p>-->
+  <%# end %>
+  <!--    </div>-->
+  <!--  </div>-->
 </div>

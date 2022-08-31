@@ -331,6 +331,8 @@ GEM
     stimulus-rails (1.1.0)
       railties (>= 6.0.0)
     strscan (3.0.4)
+    tailwindcss-rails (2.0.12-x86_64-linux)
+      railties (>= 6.0.0)
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
       ref
@@ -405,6 +407,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   selenium-webdriver
   spring
+  tailwindcss-rails (~> 2.0)
   turbo-rails (~> 1.1.1)
   tzinfo-data
   uglifier

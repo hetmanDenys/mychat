@@ -1,34 +1,62 @@
-<div class="for_table">
-  <table class="table">
-    <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col"><%= t(:email) %></th>
-      <th colspan="1"></th>
-    </tr>
-    </thead>
-    <tbody>
-    <% if params[:page].to_i === 0%>
-      <% counter = 1 %>
-    <% else %>
-      <% counter = 1 + (5 * (params[:page].to_i - 1)) %>
-    <% end %>
-    <% users.each do |user|%>
-      <% if user != current_user %>
-        <tr class="<%= cycle('white', 'blue', 'dark-blue') -%>">
-          <th scope="row"><%= counter %></th>
-          <% counter += 1 %>
-          <td><% if user.user_name != '' %>
-                <%= user.user_name %>
-              <% else %>
-                <%= user.email %>
-              <% end %></td>
-          <td><%= link_to new_room_path(recipient_id: user.id),class: "btn btn-outline-secondary btn-sm" do %>
-              <%= t(:messages) %>
-            <% end %></td>
-        </tr>
-      <% end %>
-    <% end %>
-    </tbody>
-  </table>
-</div>
+<aside class="alert-info max-h-full" aria-label="Sidebar">
+  <div class="overflow-y-auto max-h-full">
+    <div class="space-y-1 alert alert-info overflow">
+      <nav class="accordion arrows">
+        <header class="box">
+          <label for="acc-close" class="box-title">Users & rooms</label>
+        </header>
+        <% counter = 1 %>
+        <% users.each do |user| %>
+          <% if user != current_user %>
+            <input type="radio" name="accordion" id="cb<%= counter %>"/>
+            <section class="box">
+              <label class="box-title" for="cb<%= counter %>">
+                <% if user.user_name != '' %>
+                  <%= user.user_name %>
+                <% else %>
+                  <%= user.email %>
+                <% end %></label>
+              <% counter += 1 %>
+              <label class="box-close" for="acc-close"></label>
+              <div class="box-content">
+                <div class="flex ml-3 overflow-y-scroll" id="modal">
+                  <% rooms = user.rooms.all + Room.where(user_id: user.id) %>
+                  <% rooms.each do |room| %>
+                    <% if room.user_id != current_user.id %>
+                      <div class="flex mr-2 h-25">
+                        <%= link_to room_path(id: current_user.id, room_id: room.id, recipient_id: room.user_id), class: "h-25 w-25" do %>
+                          <button class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
+                            <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                                <%= room.title %>
+                            </span>
+                          </button>
+                        <% end %>
+                      </div>
+                    <% else %>
+                      <div class="flex mr-2 h-20">
+                        <% rec_id = UserRoom.where(room_id: room.id).first %>
+                        <%= link_to room_path(id: current_user.id, room_id: room.id, recipient_id: rec_id.user_id), class: "h-25 w-25" do %>
+                          <button class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
+                            <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                                <%= room.title %>
+                            </span>
+                          </button>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </div>
+                <%= link_to new_room_path(recipient_id: user.id), class: "flex items-center p-2 text-base font-normal text-gray-900 rounded-lg " do %>
+                  <button type="button" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2">
+                    <%= t(:create_room) %>
+                  </button>
+                <% end %>
+              </div>
+            </section>
+            <input type="radio" name="accordion" id="acc-close"/>
+          <% end %>
+        <% end %>
+      </nav>
+    </div>
+  </div>
+</aside>

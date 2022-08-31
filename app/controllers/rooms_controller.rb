@@ -32,9 +32,9 @@ class RoomsController < ApplicationController
   end
 
   def create
-    room = current_user.rooms.create(user_id: params[:id], title: params[:title])
+    room = current_user.rooms.create(user_id: params[:recipient_id], title: params[:title])
     if room.save
-      redirect_to room_path(id: current_user, room_id: room, recipient_id: params[:id])
+      redirect_to room_path(id: current_user, room_id: room, recipient_id: params[:recipient_id])
     else
       pp 11111
     end
